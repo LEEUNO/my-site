@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>left-arrow-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="left-arrow-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="Rectangle-2" fill="#D8D8D8" opacity="0" x="0" y="0" width="24" height="24"></rect>
+            <path d="M15,5 C15,5 12.6666667,7.33333333 8,12 L15,19" id="Path-6" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>
