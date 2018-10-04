@@ -128,7 +128,6 @@ export default {
   }
   .message {
     padding: 12px 12px 24px;
-    /* max-width: 320px; */
     opacity: 0;
     .title {
       color: #2D343B;
@@ -245,15 +244,15 @@ export default {
 }
 //animations
 .show-up {
-  animation: moveDownToUp .5s cubic-bezier(0, .6, .6, 1) 0s 1 none;
+  animation: moveDownToUp .5s cubic-bezier(.4,0,0,1) 0s 1 none;
   animation-fill-mode: forwards;
 }
 .list-button-show {
-  animation: moveDownToUp .5s cubic-bezier(0, .6, .6, 1) .6s 1 none;
+  animation: moveDownToUp .5s cubic-bezier(.4,0,0,1) .6s 1 none;
   animation-fill-mode: forwards;
 }
 .back-button-show {
-  animation: leftToRight .2s cubic-bezier(0, .6, .6, 1) 1s 1 none;
+  animation: leftToRight .2s cubic-bezier(.4,0,0,1) 1s 1 none;
   animation-fill-mode: forwards;
 }
 .movement {
@@ -264,15 +263,15 @@ export default {
   animation-fill-mode: forwards;
 }
 .intro-rise-up {
-  animation: riseUp 1s cubic-bezier(0, .5, .4, 1) 0s 1 none;
+  animation: riseUp 1s cubic-bezier(.4,0,0,1) 0s 1 none;
   animation-fill-mode: forwards;
 }
 .intro-rise-up-second {
-  animation: riseUp 1s cubic-bezier(0, .5, .4, 1) .4s 1 none;
+  animation: riseUp 1s cubic-bezier(.4,0,0,1) 0.1s 1 none;
   animation-fill-mode: forwards;
 }
 .intro-rise-up-third {
-  animation: riseUp 1s cubic-bezier(0, .5, .4, 1) .8s 1 none;
+  animation: riseUp 1s cubic-bezier(.4,0,0,1) 0.2s 1 none;
   animation-fill-mode: forwards;
 }
 @keyframes moveDownToUp {

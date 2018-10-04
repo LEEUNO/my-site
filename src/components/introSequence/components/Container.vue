@@ -168,6 +168,7 @@ export default {
   mounted () {
     // this.displayButton()
     this.pathAnimation()
+    const myTween = new TweenLite.to('.box', 2, {width:100, height:100})
   },
   methods: {
     pathAnimation () {
@@ -282,33 +283,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.box{width:50px;height:50px;background-color:#000;}
 .hide-content {
-  // transition: opacity .3s cubic-bezier(.75, .01, .63, .87);
   display: none;
-}
-.slider {
-    width: 200px; /* Full-width */
-    height: 25px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
-}
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-}
-
-.slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
-    cursor: pointer; /* Cursor on hover */
 }
 .return-icon {
   text-align: center;
@@ -335,44 +312,8 @@ export default {
 }
 .sequence {
   padding-bottom: 42px;
-  .intro-button-wrapper {
-    position: fixed;
-    bottom: 0;
-    background-color: #ffffff;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .gradient-filter {
-      position: absolute;
-      pointer-events: none;
-      width: 100%;
-      height: 30px;
-      margin-top: -42px;
-      background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 70%);
-    }
-    .intro-button {
-      flex-grow: 1;
-      align-items: flex-start;
-      width: 50%;
-      height: 43px;
-      margin: 8px 12px 12px;
-      line-height: 42px;
-      border-radius: 20px 4px 20px 20px;
-      background-color: #2D343B;
-      font-size: 16px;
-      color: #ffffff;
-      text-align: center;
-      &:first-child {
-        border-radius: 20px;
-        align-items: flex-end;
-        margin-right: 12px;
-      }
-    }
-  }
   .message {
     padding: 12px 12px 24px;
-    /* max-width: 320px; */
     opacity: 0;
     .title {
       color: #2D343B;
@@ -380,75 +321,9 @@ export default {
       font-weight: 700;
       line-height: 38px;
       text-align: center;
-      .paragraph {
-        opacity: 0;
-        margin-bottom: 36px;
-      }
     }
     .highlight {
       color: #0285FF;
-    }
-    .sticker-wrapper {
-      position: relative;
-      display: inline-block;
-      font-size: 14px;
-      width: 160px;
-      text-align: center;
-      color: #0285FF;
-      height: 24px;
-      vertical-align: top;
-      margin-top: 4px;
-      .sticker {
-        position: absolute;
-        top: 0;
-        width: 162px;
-        height: auto;
-        padding: 6px 12px 0;
-        height: 28px;
-        line-height: 16px;
-        background-color: #FBFBAE;
-        z-index: 2;
-        transform: rotate(-2deg);
-        &.is-sticker-off {
-          opacity: 0;
-          transition: opacity 1s cubic-bezier(.75, .01, .63, .87) 1s;
-        }
-        .edge-out {
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 16px;
-          height: 16px;
-          -webkit-clip-path: polygon(0 0, 100% 100%, 100% 0);
-          clip-path: polygon(0 0, 100% 100%, 100% 0);
-          background-color: #ffffff;
-          z-index: 4;
-        }
-        .edge {
-          position: absolute;
-          -webkit-clip-path: polygon(0 0, 100% 100%, 0 100%);
-          clip-path: polygon(0 0, 100% 100%, 0 100%);
-          top: 0;
-          right: 0;
-          width: 16px;
-          height: 16px;
-          z-index: 3;
-          background-color: #ECECAD;
-        }
-      }
-      .qou {
-        position: absolute;
-        left: 0;
-        top: 8px;
-        font-size: 16px;
-        line-height: 16px;
-        font-weight: 400;
-        color: #0285FF;
-        box-shadow: 4px 8px 10px #dedede;
-        &.remove-shadow {
-          box-shadow: none;
-        }
-      }
     }
   }
   .button-container {
@@ -563,7 +438,7 @@ footer {
       font-size: 16px;
       margin: 12px;
       padding: 18px 24px;
-      border-radius: 12px;
+      border-radius: 4px 12px 12px 12px;
       box-shadow: 0 2px 10px #dedede;
       .selected-contents {
         display: inline-block;

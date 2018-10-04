@@ -4,7 +4,9 @@
       <div class="page-header">
           <!-- <div class="close-button"> -->
             <!-- <router-link to="/" tag="button" class="close-button">Close</router-link> -->
-            <div class="close-button" @click="close">Close</div>
+            <div class="close-button" @click="close">
+                <img src="../../static/assets/btn-close.svg" alt="close">
+            </div>
           <!-- </div> -->
           <div class="title">Sign Up</div>
       </div>
@@ -38,18 +40,21 @@
                 <div class="label">
                     Email
                 </div>
-                <input type="email" placeholder="Last name on passport">
+                <input type="email" placeholder="Type your email address">
             </div>
             <div class="input-wrapper">
                 <div class="label">
                     Country
                 </div>
-                <select name="country" id="">
-                    <option value="Korea">Korea</option>
-                    <option value="HongKong">HongKong</option>
-                    <option value="Japan">Japan</option>
-                    <option value="Taiwan">Taiwan</option>
-                </select>
+                <div class="select-wrapper">
+                    <img class="down-arrow" src="../../static/assets/btn-caret-down.svg" alt="down-caret">
+                    <select name="country" id="">
+                        <option value="Korea">Korea</option>
+                        <option value="HongKong">HongKong</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Taiwan">Taiwan</option>
+                    </select>
+                </div>
             </div>
       </div>
       <div class="footer-section">
@@ -119,7 +124,7 @@ export default {
     .contents-wrapper {
         margin-top: 56px;
         .input-wrapper {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             .label {
                 width:57px;
                 height:14px;
@@ -137,8 +142,17 @@ export default {
                 background-color: #fafafa;
                 border-radius: 2px;
             }
-            select {
-                padding: 0 8px;
+            .select-wrapper {
+                position: relative;
+                select {
+                    padding: 0 8px;
+                }
+                .down-arrow {
+                    position: absolute;
+                    right: 2px;
+                    top: 2px;
+                    pointer-events: none;
+                }
             }
             input::placeholder {
                 opacity:.4;
@@ -190,12 +204,12 @@ export default {
     }
 }
 .fade-enter-active, .fade-leave-active {
-  transition: all .4s cubic-bezier(.75, .01, .63, .87);
+  transition: all .4s cubic-bezier(.4,0,0,1);
   transform: translateY(0);
   opacity: 1;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  transition: all .4s cubic-bezier(.75, .01, .63, .87);
+  transition: all .4s cubic-bezier(.4,0,0,1);
   opacity: 0;
   transform: translateY(10%);
 }
