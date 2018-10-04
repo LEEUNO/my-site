@@ -167,8 +167,8 @@ export default {
   },
   mounted () {
     // this.displayButton()
-    this.pathAnimation()
-    const myTween = new TweenLite.to('.box', 2, {width:100, height:100})
+    // this.pathAnimation()
+    // const myTween = new TweenLite.to('.box', 2, {width:100, height:100})
   },
   methods: {
     pathAnimation () {
@@ -283,7 +283,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.box{width:50px;height:50px;background-color:#000;}
+// .box{width:50px;height:50px;background-color:#000;}
 .hide-content {
   display: none;
 }
