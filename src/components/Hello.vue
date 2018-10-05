@@ -1,31 +1,85 @@
 <template>
   <div class="g-main-page">
+    <!-- header section -->
+    <header>
+      <!-- menu button wrapper -->
+      <div class="g-header" id="g-header">
+        <div class="personal-logo button">LOGO</div>
+        <div class="side-menu-button button" @click="openSideMenu()">SIDE MENU</div>
+        <div class="g-header-bg"></div>
+        <div class="g-header-bg2"></div>
+      </div>
+      <!-- close button wrapper -->
+      <div id="close-button" class="close-button-wrapper" >
+        <div class="close-button" @click="openSideMenu()" >Close</div>
+      </div>
+    </header>
 
-    <div class="g-header" id="g-header" :class="[{ 'close-header' : isSideMenuOpen },'open-header']">
-      <div class="personal-logo">LOGO</div>
-      <div class="side-menu-button" @click="openSideMenu()">SIDE MENU</div>
-      <div class="g-header-bg"></div>
-    </div>
-
-    <div id="close-button" class="close-button-wrapper" :class="[{ 'close-header' : !isSideMenuOpen }, 'open-header']">
-      <div class="close-button" @click="openSideMenu()" >Close</div>
-    </div>
-
+    <!-- header contents -->
     <div class="g-header-page">
+      <!-- side menu contents -->
       <div class="g-side-menu-contents" id="g-sideMenuContent">
         <ul>
-          <li class="list-item"><a href="#">Test liat item_1</a></li>
-          <li class="list-item"><a href="#">Test liat item_2</a></li>
-          <li class="list-item"><a href="#">Test liat item_3</a></li>
+          <div class="label set-show" id="label1">
+            <!-- <div class="label set-show-up" id="label1"> -->
+            <div class="label-item">01</div>
+            <div class="label-line set-banner-line"></div>
+            <div class="label-item">someText</div>
+          </div>
+          <!-- <div class="label-line set-banner-line"></div> -->
+          <li class="list-item"><a href="#">Test list item_1</a></li>
+          <li class="list-item"><a href="#">Test list item_2</a></li>
+          <li class="list-item"><a href="#">Test list item_3</a></li>
         </ul>
+        <div class="label-line set-banner-line"></div>
       </div>
+
+
+      <!-- side menu contents banner -->
+      <div class="banner-wrapper" id="banner-wrapper">
+        <a class="nav-banner">
+          <div class="label set-show" id="label2">
+          <!-- <div class="label set-show-up" id="label1"> -->
+            <div class="label-item">02</div>
+            <div class="label-line set-banner-line"></div>
+            <div class="label-item">someText</div>
+          </div>
+          <div class="banner-title" id="title1">
+            telkjsldkjfas dxcvsdvxcvsdvs
+          </div>
+          <div class="banner-bg">
+          </div>
+            <div class="button-wrapper set-show">
+              <!-- someIcons -->
+            </div>
+        </a>
+        <a class="nav-banner">
+           <div class="label set-show" id="label3">
+            <!-- <div class="label set-show-up" id="label1"> -->
+            <div class="label-item">03</div>
+            <div class="label-line set-banner-line"></div>
+            <div class="label-item">someText</div>
+          </div>
+          <div class="banner-title" id="title2">
+            telkjsldkjfasd xcvsdvxcvsdvs
+          </div>
+          <div class="banner-bg">
+          </div>
+          <div class="button-wrapper set-show">
+            <!-- someIcons -->
+          </div>
+        </a>
+      </div>
+
+
+      <!-- main contents -->
       <div class="main-contents" id="g-mainContent">
         <h1 class="title-animation" id="title-animation">
-          This is test script
+          someTextsomeTextsomeText
         </h1>
         <br>
         <h1 id="title-animation">
-          This is test scriptThis is test script
+          someText
         </h1>
       </div>
     </div>
@@ -59,6 +113,87 @@ export default {
         header.style.transform = 'translateZ(0)'
       }, 100);
     },
+    lineAnimation(target, delayIn, delayOut, isOn) {
+      const items = document.getElementsByClassName(target)
+      if (isOn) {
+        for (let item of items){
+          item.style.transform = 'scaleX(1)'
+          item.style.transitionDelay = delayIn
+          item.style.transformOrigin = 'left center'
+        }
+      } else {
+        for (let item of items){
+          item.style.transitionDelay = delayOut
+          item.style.transformOrigin = 'right center'
+          setTimeout(function() {
+            item.style.transform = 'scaleX(0)'
+          }, 1000)
+        }
+      }
+    },
+    showAnimation (target, direction, delayIn, delayOut, isOn, isArray) {
+      if (isArray === true) {
+        const items = document.getElementsByClassName(target)
+        if (isOn) {
+          for (let item of items ) {
+            item.style.pointerEvents = 'auto'
+            item.style.opacity = 1
+            item.style.transitionDelay = delayIn
+            item.style.transform = 'translateZ(0)'
+          }
+        } else {
+          for (let item of items) {
+            item.style.pointerEvents = 'none'
+            item.style.opacity = 0
+            item.style.transitionDelay = delayOut
+            item.style.transform = 'translate3d(0,-40px,0)'
+            setTimeout(function() {
+            item.style.transform = 'translateZ(0)'
+            }, 1000)
+          }
+        }
+        return
+      }
+      const item = document.getElementById(target)
+      if (direction === 'up') {
+        if (isOn) {
+          item.style.transform = 'translateZ(0)'
+          item.style.opacity = 1
+          item.style.transitionDelay = delayIn
+        } else {
+          // item.style.transform = 'translate3d(0,-50px,0)'
+          item.style.opacity = 0
+          item.style.transitionDelay = delayOut
+          setTimeout(function() {
+            item.style.transform = 'translate3d(0,50px,0)'
+          }, 1000)
+        }
+      } else if (direction === 'right') {
+        if (isOn) {
+          item.style.transform = 'scaleX(1)'
+          item.style.transitionDelay = delayIn
+          item.style.transformOrigin = 'left center'
+        } else {
+          item.style.transitionDelay = delayOut
+          item.style.transformOrigin = 'right center'
+        }
+      } else if (direction === false) {
+        if (isOn) {
+          item.style.pointerEvents = 'auto'
+          item.style.opacity = 1
+          item.style.transitionDelay = delayIn
+          item.style.transform = 'translateZ(0)'
+        } else {
+          item.style.pointerEvents = 'none'
+          item.style.opacity = 0
+          item.style.transitionDelay = delayOut
+          item.style.transform = 'translate3d(0,-40px,0)'
+          setTimeout(function() {
+          item.style.transform = 'translateZ(0)'
+          }, 1000)
+        }
+      }
+    },
     headerAnimation (isOn) {
       const header = document.getElementById('g-header')
       if (isOn) {
@@ -70,11 +205,13 @@ export default {
       }
     },
     sideMenuListAnimation (isOn) {
-      const listTags = document.getElementsByTagName('li')
+      const lists = document.getElementById('g-sideMenuContent')
+      const listItem = document.getElementsByTagName('li')
+      
       if (isOn) {
         setTimeout(function(){
-          let indexCount = .4
-          for (let listTag of listTags) {
+          let indexCount = .5
+          for (let listTag of listItem) {
             listTag.style.pointerEvents = 'auto'
             listTag.style.transform = 'translateY(0)'
             listTag.style.opacity = 1
@@ -85,7 +222,7 @@ export default {
       } else {
         setTimeout(function(){
           let indexCount = 0
-          for (let listTag of listTags) {
+          for (let listTag of listItem) {
             listTag.style.pointerEvents = 'none'
             listTag.style.transform = 'translate3d(0,-50px,0)'
             listTag.style.opacity = 0
@@ -95,7 +232,7 @@ export default {
         }, 100)
       }
       //init list item position
-      for (let listTag of listTags) {
+      for (let listTag of listItem) {
         listTag.style.transform = 'translate3d(0,50px,0)'
       }
     },
@@ -114,15 +251,41 @@ export default {
       const mainContents = document.getElementById('g-mainContent')
       const titleAnimations = document.getElementsByClassName('title-animation')
       const closeButton = document.getElementById('close-button')
+      const bannerWrapper = document.getElementById('banner-wrapper')
+
+      const menuBanner = document.getElementsByClassName('banner-bg')
       if (isOn) {
+        bannerWrapper.style.pointerEvents = 'auto'
         mainContents.style.pointerEvents = 'none'
-        this.sideMenuBgAnimation(isOn)
-        this.headerAnimation(isOn)
+        closeButton.style.transform = 'translateZ(0)'
+        closeButton.style.transitionDelay = '1s'
+        for (let banner of menuBanner) {
+          banner.style.transformOrigin = 'bottom'
+          banner.style.transform = 'scaleY(1)'
+          banner.style.transitionDelay = '1s'
+        }
       } else {
+        bannerWrapper.style.pointerEvents = 'none'
         mainContents.style.pointerEvents = 'auto'
-        this.sideMenuBgAnimation(isOn)
-        this.headerAnimation(isOn)
+        closeButton.style.transform = 'translate3d(-100%,0,0)'
+        closeButton.style.transitionDelay = '.5s'
+
+          for (let banner of menuBanner) {
+          banner.style.transformOrigin = 'top'
+          banner.style.transform = 'scaleY(0)'
+          banner.style.transitionDelay = '.15s'
+        }
       }
+      this.showAnimation('label1', false, '1.2s', '0s', isOn)
+      this.showAnimation('label2', false, '1.2s', '0s', isOn)
+      this.showAnimation('label3', false, '1.2s', '0s', isOn)
+      this.showAnimation('button-wrapper', false, '1.2s', '0s', isOn, true)
+      this.lineAnimation('set-banner-line', '1.5s', '0s', isOn)
+      
+      this.showAnimation('title1', 'up', '1.2s', '.2s', isOn)
+      this.showAnimation('title2', 'up', '1.2s', '.2s', isOn)
+      this.sideMenuBgAnimation(isOn)
+      this.headerAnimation(isOn)
       this.sideMenuListAnimation(isOn)
       
     }
@@ -131,8 +294,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.button {
+  cursor: pointer;
+}
+// set animation attributes
+.set-show {
+  opacity: 0;
+  transition: transform .6s cubic-bezier(.4,0,0,1) .05s,opacity .6s cubic-bezier(.4,0,0,1) .05s;
+  transform-origin: center bottom;
+}
+.set-show-up {
+  opacity: 0;
+  transition: transform .6s cubic-bezier(.4,0,0,1) .05s,opacity .6s cubic-bezier(.4,0,0,1) .05s;
+  transform-origin: center bottom;
+  transform: translate3d(0,50px,0);
+}
+.set-show-right {
+  transition: transform .45s cubic-bezier(.4,0,0,1) .3s;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+.set-banner-line {
+  // opacity: 0;
+  transition: transform .45s cubic-bezier(.4,0,0,1) .05s,opacity .6s cubic-bezier(.4,0,0,1) .05s;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
 
-
+// main style
 .g-main-page {
   position: relative;
   width: 100%;
@@ -168,14 +357,7 @@ export default {
       cursor: pointer;
   }
 }
-.open-header {
-  transform: translateZ(0);
-  transition-delay: .5s;
-}
-.close-header {
-  transform: translate3d(-100%,0,0);
-  transition-delay: .5s;
-}
+
 .g-header {
     position: fixed;
     display: flex;
@@ -184,8 +366,8 @@ export default {
     flex-direction: column;
     top: 0;
     left: 0;
-    width: 8em;
-    height: 50%;
+    width: 8rem;
+    height: 100%;
     z-index: 10;
     min-height: 420px;
     transition: transform .45s cubic-bezier(.4,0,0,1) .3s;
@@ -217,18 +399,155 @@ export default {
       background-color: #181818;
       z-index: -1;
   }
+  .g-header-bg2 {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #f5f5f5;
+      z-index: -1;
+  }
 }
 .g-header-page {
+    width: 100%;
     position: relative;
-    margin-left: 8rem;
     width: calc(100% - 8rem);
+    margin-left: 8rem;
     height: 100%;
     background-color: #ffffff;
     .g-side-menu-contents {
       position: relative;
-      width: 100%;
+      width: 75%;
+      height: 100%;
+      padding-top: 40px;
+      .label {
+         margin-bottom: 40px;
+        .label-item {
+          display: inline-block;
+          color: #ffffff;
+        }
+        .label-line {
+          display: inline-block;
+          width: 4rem;
+          height: 1px;
+          background-color: #ffffff;
+          margin-right: 4px;
+          margin-left: 4px;
+          &:last-child {
+            margin: 120px 0 0;
+            height: 1px;
+          }
+        }
+      }
     }
-    
+    .banner-wrapper {
+      position: absolute;
+      width: 25%;
+      height: 100%;
+      right: 0;
+      top: 0;
+      .nav-banner {
+        position: absolute;
+        cursor: pointer;
+        z-index: 1;
+        width: 100%;
+        left: 0;
+        top:0;
+        height: 60%;
+        padding: 40px;
+        .label {
+          pointer-events: none;
+          margin-bottom: 40px;
+          .label-item {
+            display: inline-block;
+            margin: 0;
+          }
+          .label-line {
+            display: inline-block;
+            width: 4rem;
+            height: 1px;
+            margin-right: 4px;
+            margin-left: 4px;
+            background-color: #181818;
+          }
+        }
+        .banner-title {
+          pointer-events: none;
+          margin: 20px 0;
+          color: #181818;
+          font-size: 28px;
+          opacity: 0;
+          transition: transform .6s cubic-bezier(.4,0,0,1) .05s,opacity .6s cubic-bezier(.4,0,0,1) .05s;
+          transform-origin: center bottom;
+          transform: translate3d(0,50px,0);
+        }
+        .banner-bg {
+          position: absolute;
+          right: 0;
+          top:0;
+          z-index: -1;
+          width: 100%;
+          height: 100%;
+          background-color: #ffffff;
+          transition: transform .45s cubic-bezier(.4,0,0,1);
+          transform: scaleY(0);
+          transform-origin: center bottom;
+        }
+        .button-wrapper {
+          position: absolute;
+          right: 30px;
+          bottom: 40px;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          background-color: #ededed;
+        }
+        .button-wrapper:before {
+          content: "";
+          display: block;
+          border-radius: inherit;
+          background-color: #dedede;
+          width: 60px;
+          height: 60px;
+          animation: scale-out .3s cubic-bezier(.4,0,0,1);
+          animation-fill-mode: forwards;
+        }
+        &:hover > .button-wrapper:before {
+          animation: scale-in .3s cubic-bezier(.4,0,0,1);
+          transform-origin: center center;
+          animation-fill-mode: forwards;
+        }
+        &:last-child {
+          top:60%;
+          height: 40%;
+          .label {
+            .label-item {
+              color: #ffffff;
+            }
+            .label-line {
+              background-color: #ffffff;
+            }
+          }
+          .banner-title {
+            color: #ffffff;
+          }
+          .button-wrapper {
+            background-color: #ffffff;
+          }
+          .banner-bg {
+            background-color: #3150ff;
+          }
+        }
+      }
+    }
+    .main-contents {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
    
 }
 h1 {
@@ -257,6 +576,7 @@ h1::after {
 ul {
   position: absolute;
   z-index: 999;
+  padding: 0 100px;
 }
 li {
     transition: transform .6s cubic-bezier(.4,0,0,1) .05s,opacity .6s cubic-bezier(.4,0,0,1) .05s;
@@ -297,6 +617,16 @@ li {
     50% {transform: scaleX(1); transform-origin: left;}
     51% {transform: scaleX(1); transform-origin: right;}
     100% {transform: scaleX(0); transform-origin: right;}
+}
+@keyframes scale-in {
+    0% {transform: scale(0);}
+    50% {transform: scale(1.15);}
+    100% {transform: scale(1.1);}
+}
+@keyframes scale-out {
+    0% {transform: scale(1.1);}
+    50% {transform: scale(1.1);}
+    100% {transform: scale(0);}
 }
 @keyframes title {
     0% {color: #ffffff;}
