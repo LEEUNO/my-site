@@ -73,14 +73,93 @@
 
 
       <!-- main contents -->
-      <div class="main-contents" id="g-mainContent">
-        <h1 class="title-animation" id="title-animation">
-          someTextsomeTextsomeText
+      <div class="main-contents" v-on:scroll="scrollController" id="g-mainContent">
+      {{winsow}}
+        <h1 class=test-script>
+          <span class="title-animation">someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
         </h1>
-        <br>
-        <h1 id="title-animation">
-          someText
+        <h1 class=test-script>
+          <span class="title-animation">someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
         </h1>
+        <h1 class=test-script>
+          <span class="title-animation">someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+        </h1>
+        <h1 class=test-script>
+          <span class="title-animation">someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+        </h1>
+        <h1 class=test-script>
+          <span class="title-animation">someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+        </h1>
+        <h1 class=test-script>
+          <span class="title-animation">someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+        </h1>
+        <h1 class=test-script>
+          <span class="title-animation">someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+          <span class="title-animation">someText someText someText</span>
+        </h1>
+        
       </div>
     </div>
 
@@ -98,15 +177,34 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       isHeaderOpen: true,
-      isSideMenuOpen: false
+      isSideMenuOpen: false,
+      winsow: 0,
     }
   },
   mounted () {
     this.isLoaded()
+    this.scrollController()
   },
   created () {
   },
   methods: {
+    scrollController () {
+      const items = document.getElementById('g-mainContent')
+      const el = document.getElementsByClassName('test-script')
+      this.winsow = items.offsetHeight
+      // 
+      // console.log(windowHeight)
+      for (let item of el) {
+        const domRect = item.getBoundingClientRect().top + 200
+        if (domRect < this.winsow) {
+          item.style.opacity = 1
+          item.style.transform = 'translateZ(0)'
+        } else {
+          item.style.opacity = 0
+          item.style.transform = 'translate3D(0,50px,0)'
+        }
+      }
+    },
     isLoaded () {
       const header = document.getElementById('g-header')
       setTimeout(function(){
@@ -161,7 +259,6 @@ export default {
           item.style.opacity = 1
           item.style.transitionDelay = delayIn
         } else {
-          // item.style.transform = 'translate3d(0,-50px,0)'
           item.style.opacity = 0
           item.style.transitionDelay = delayOut
           setTimeout(function() {
@@ -205,9 +302,7 @@ export default {
       }
     },
     sideMenuListAnimation (isOn) {
-      const lists = document.getElementById('g-sideMenuContent')
       const listItem = document.getElementsByTagName('li')
-      
       if (isOn) {
         setTimeout(function(){
           let indexCount = .5
@@ -230,10 +325,28 @@ export default {
             indexCount += 0.05
           }
         }, 100)
+       
       }
       //init list item position
       for (let listTag of listItem) {
         listTag.style.transform = 'translate3d(0,50px,0)'
+      }
+        
+    },
+    bannerBgAnimation (isOn) {
+      const menuBanner = document.getElementsByClassName('banner-bg')
+      if (isOn) {
+        for (let banner of menuBanner) {
+          banner.style.transformOrigin = 'bottom'
+          banner.style.transform = 'scaleY(1)'
+          banner.style.transitionDelay = '1s'
+        }
+      } else {
+          for (let banner of menuBanner) {
+          banner.style.transformOrigin = 'top'
+          banner.style.transform = 'scaleY(0)'
+          banner.style.transitionDelay = '.15s'
+        }
       }
     },
     sideMenuBgAnimation (isOn) {
@@ -247,34 +360,26 @@ export default {
       }
     },
     openSideMenu () {
+      // const domRect = mainContents.getBoundingClientRect()
+      
       const isOn = this.isSideMenuOpen = !this.isSideMenuOpen
+
+      const lists = document.getElementById('g-sideMenuContent')
       const mainContents = document.getElementById('g-mainContent')
       const titleAnimations = document.getElementsByClassName('title-animation')
       const closeButton = document.getElementById('close-button')
-      const bannerWrapper = document.getElementById('banner-wrapper')
-
-      const menuBanner = document.getElementsByClassName('banner-bg')
       if (isOn) {
-        bannerWrapper.style.pointerEvents = 'auto'
+        lists.style.zIndex = 1
         mainContents.style.pointerEvents = 'none'
         closeButton.style.transform = 'translateZ(0)'
         closeButton.style.transitionDelay = '1s'
-        for (let banner of menuBanner) {
-          banner.style.transformOrigin = 'bottom'
-          banner.style.transform = 'scaleY(1)'
-          banner.style.transitionDelay = '1s'
-        }
       } else {
-        bannerWrapper.style.pointerEvents = 'none'
         mainContents.style.pointerEvents = 'auto'
         closeButton.style.transform = 'translate3d(-100%,0,0)'
         closeButton.style.transitionDelay = '.5s'
-
-          for (let banner of menuBanner) {
-          banner.style.transformOrigin = 'top'
-          banner.style.transform = 'scaleY(0)'
-          banner.style.transitionDelay = '.15s'
-        }
+        setTimeout(function(){
+         lists.style.zIndex = -999
+        }, 1000)
       }
       this.showAnimation('label1', false, '1.2s', '0s', isOn)
       this.showAnimation('label2', false, '1.2s', '0s', isOn)
@@ -286,6 +391,7 @@ export default {
       this.showAnimation('title2', 'up', '1.2s', '.2s', isOn)
       this.sideMenuBgAnimation(isOn)
       this.headerAnimation(isOn)
+      this.bannerBgAnimation(isOn)
       this.sideMenuListAnimation(isOn)
       
     }
@@ -296,6 +402,12 @@ export default {
 <style lang="scss" scoped>
 .button {
   cursor: pointer;
+}
+.test-script {
+  opacity: 0;
+  transform: translate3d(0,-20px,0);
+  transition: transform .6s cubic-bezier(.4,0,0,1) .05s,opacity .6s cubic-bezier(.4,0,0,1) .05s;
+  transform-origin: center bottom;
 }
 // set animation attributes
 .set-show {
@@ -545,6 +657,7 @@ export default {
       position: absolute;
       width: 100%;
       height: 100%;
+      overflow-y: scroll;
       top: 0;
       left: 0;
     }
@@ -575,7 +688,6 @@ h1::after {
 }
 ul {
   position: absolute;
-  z-index: 999;
   padding: 0 100px;
 }
 li {
