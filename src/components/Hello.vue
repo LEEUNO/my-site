@@ -90,15 +90,15 @@
           </div>
         </div>
         <br>
-        <div class="scroll-show box">
-        </div>
-        <div class="scroll-show box">
-        </div>
-        <div class="scroll-show box">
-        </div>
-        <div class="scroll-show box">
-        </div>
-        <div class="scroll-show box">
+        <div class="list-wrapper">
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
         </div>
         <br>
         <div class="animatnion-title-wrapper">
@@ -113,15 +113,15 @@
           </div>
         </div>
         <br>
-        <div class="scroll-show box">
-        </div>
-        <div class="scroll-show box">
-        </div>
-        <div class="scroll-show box">
-        </div>
-        <div class="scroll-show box">
-        </div>
-        <div class="scroll-show box">
+        <div class="list-wrapper">
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
         </div>
         <br>
       </body>
@@ -396,16 +396,18 @@ export default {
 .button {
   cursor: pointer;
 }
-.box  {
-    display: flex;
-    flex-grow: 1;
-    margin-right: 20px;
-    height: 420px;
-    border-radius: 24px;
-    justify-content: center;
-    align-items: center;
-    background-color: #ededed;
-    margin-bottom: 50px;
+.list-wrapper {
+  .box  {
+      display: flex;
+      flex-grow: 1;
+      margin-right: 20px;
+      height: 420px;
+      border-radius: 24px;
+      justify-content: center;
+      align-items: center;
+      background-color: #ededed;
+      margin-bottom: 50px;
+  }
 }
 .scroll-show {
   opacity: 0;
@@ -663,6 +665,7 @@ export default {
       width: 100%;
       height: 100%;
       overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
       padding: 20px;
       top: 0;
       left: 0;
@@ -693,7 +696,7 @@ h1 {
   display: inline-block;
   font-weight: 100;
   color: transparent;
-  font-size: 62px;
+  font-size: 52px;
   p {
     display: inline-block;
   }
