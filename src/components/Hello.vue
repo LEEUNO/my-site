@@ -73,94 +73,58 @@
 
 
       <!-- main contents -->
-      <div class="main-contents" v-on:scroll="scrollController" id="g-mainContent">
-      {{winsow}}
-        <h1 class=test-script>
-          <span class="title-animation">someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-        </h1>
-        <h1 class=test-script>
-          <span class="title-animation">someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-        </h1>
-        <h1 class=test-script>
-          <span class="title-animation">someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-        </h1>
-        <h1 class=test-script>
-          <span class="title-animation">someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-        </h1>
-        <h1 class=test-script>
-          <span class="title-animation">someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-        </h1>
-        <h1 class=test-script>
-          <span class="title-animation">someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-        </h1>
-        <h1 class=test-script>
-          <span class="title-animation">someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-          <span class="title-animation">someText someText someText</span>
-        </h1>
-        
-      </div>
+      <body class="main-contents" v-on:scroll="scrollController" id="g-mainContent">
+        <!-- <div class="animation-title">
+          alkentlaknsdflkansdlfkam
+          <span class="mask-bg"></span>
+        </div> -->
+        <div class="animatnion-title-wrapper">
+          <div class="animation-title">
+            someText alke
+            <span class="mask-bg"></span>
+          </div>
+          <br>
+          <div class="animation-title">
+            someText alke ntlakn
+            <span class="mask-bg"></span>
+          </div>
+        </div>
+        <br>
+        <div class="scroll-show box">
+        </div>
+        <div class="scroll-show box">
+        </div>
+        <div class="scroll-show box">
+        </div>
+        <div class="scroll-show box">
+        </div>
+        <div class="scroll-show box">
+        </div>
+        <br>
+        <div class="animatnion-title-wrapper">
+          <div class="animation-title">
+            someText alke
+            <span class="mask-bg"></span>
+          </div>
+          <br>
+          <div class="animation-title">
+            someText alke ntlakn
+            <span class="mask-bg"></span>
+          </div>
+        </div>
+        <br>
+        <div class="scroll-show box">
+        </div>
+        <div class="scroll-show box">
+        </div>
+        <div class="scroll-show box">
+        </div>
+        <div class="scroll-show box">
+        </div>
+        <div class="scroll-show box">
+        </div>
+        <br>
+      </body>
     </div>
 
     <div id="side-menu-bg"></div>
@@ -177,31 +141,54 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       isHeaderOpen: true,
-      isSideMenuOpen: false,
-      winsow: 0,
+      isSideMenuOpen: false
     }
   },
   mounted () {
     this.isLoaded()
     this.scrollController()
+    // this.titleAfterAnimation()
   },
   created () {
   },
   methods: {
-    scrollController () {
+    isShown (el) {
+      console.log(el)
+    },
+    titleAfterAnimation () {
       const items = document.getElementById('g-mainContent')
-      const el = document.getElementsByClassName('test-script')
-      this.winsow = items.offsetHeight
-      // 
-      // console.log(windowHeight)
+      const windowOffsetHighet = items.offsetHeight
+      const el = document.getElementsByClassName('animation-title')
+
       for (let item of el) {
-        const domRect = item.getBoundingClientRect().top + 200
-        if (domRect < this.winsow) {
-          item.style.opacity = 1
+        const domRect = item.getBoundingClientRect().y + 200
+        const lastEl = item.children.length - 1
+          if (domRect < windowOffsetHighet) {
+            if (item.children[lastEl].className.includes(' mask-go')) {
+
+            } else {
+              item.children[lastEl].className += ' mask-go'
+              item.className += ' title-go'
+            }
+          } else {
+            
+            }
+        }
+    },
+    scrollController () {
+      this.titleAfterAnimation()
+      const items = document.getElementById('g-mainContent')
+      const el = document.getElementsByClassName('scroll-show')
+      const windowOffsetHighet = items.offsetHeight
+      for (let item of el) {
+        const domRect = item.getBoundingClientRect().top + 100
+        if (domRect < windowOffsetHighet) {
           item.style.transform = 'translateZ(0)'
+          item.style.opacity = 1
+          item.style.transitionDelay = '.2s'
         } else {
-          item.style.opacity = 0
           item.style.transform = 'translate3D(0,50px,0)'
+          item.style.opacity = 0
         }
       }
     },
@@ -339,7 +326,7 @@ export default {
         for (let banner of menuBanner) {
           banner.style.transformOrigin = 'bottom'
           banner.style.transform = 'scaleY(1)'
-          banner.style.transitionDelay = '1s'
+          banner.style.transitionDelay = '.8s'
         }
       } else {
           for (let banner of menuBanner) {
@@ -351,12 +338,17 @@ export default {
     },
     sideMenuBgAnimation (isOn) {
       const sideMenuBg = document.getElementById('side-menu-bg')
+      const bannerWrapper = document.getElementById('banner-wrapper')
       if (isOn) {
+        bannerWrapper.style.zIndex = 2
         sideMenuBg.style.transform = 'scaleX(1)'
         sideMenuBg.style.transitionDelay = '.5s'
       } else {
         sideMenuBg.style.transform = 'scaleX(0)'
         sideMenuBg.style.transitionDelay = '.5s'
+        setTimeout(function(){
+         bannerWrapper.style.zIndex = -999
+        }, 1000)
       }
     },
     openSideMenu () {
@@ -365,8 +357,9 @@ export default {
       const isOn = this.isSideMenuOpen = !this.isSideMenuOpen
 
       const lists = document.getElementById('g-sideMenuContent')
+      
       const mainContents = document.getElementById('g-mainContent')
-      const titleAnimations = document.getElementsByClassName('title-animation')
+      // const titleAnimations = document.getElementsByClassName('title-animation')
       const closeButton = document.getElementById('close-button')
       if (isOn) {
         lists.style.zIndex = 1
@@ -403,9 +396,20 @@ export default {
 .button {
   cursor: pointer;
 }
-.test-script {
+.box  {
+    display: flex;
+    flex-grow: 1;
+    margin-right: 20px;
+    height: 420px;
+    border-radius: 24px;
+    justify-content: center;
+    align-items: center;
+    background-color: #ededed;
+    margin-bottom: 50px;
+}
+.scroll-show {
   opacity: 0;
-  transform: translate3d(0,-20px,0);
+  transform: translate3d(0,50px,0);
   transition: transform .6s cubic-bezier(.4,0,0,1) .05s,opacity .6s cubic-bezier(.4,0,0,1) .05s;
   transform-origin: center bottom;
 }
@@ -435,7 +439,7 @@ export default {
 
 // main style
 .g-main-page {
-  position: relative;
+  position: fixed;
   width: 100%;
   height: 100%;
   #side-menu-bg {
@@ -556,6 +560,7 @@ export default {
     .banner-wrapper {
       position: absolute;
       width: 25%;
+      z-index: -999;
       height: 100%;
       right: 0;
       top: 0;
@@ -658,6 +663,7 @@ export default {
       width: 100%;
       height: 100%;
       overflow-y: scroll;
+      padding: 20px;
       top: 0;
       left: 0;
     }
@@ -671,20 +677,35 @@ h1 {
   animation-delay: .5s;
   animation-fill-mode: forwards;
 }
-h1::after {
-  transition: transform .3s cubic-bezier(.4,0,0,1);
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #181818;
-  transform-origin: right;
+.mask-go {
   animation: title-after 1s cubic-bezier(.4,0,0,1);
-  animation-delay: .5s;
+  animation-delay: .2s;
   animation-fill-mode: forwards;
-  transform: scaleX(0);
+}
+.title-go {
+  animation: title 1s cubic-bezier(.4,0,0,1);
+  animation-delay: .2s;
+  animation-fill-mode: forwards;
+}
+.animation-title {
+  position: relative;
+  // max-width: 400px;
+  display: inline-block;
+  font-weight: 100;
+  color: transparent;
+  font-size: 62px;
+  p {
+    display: inline-block;
+  }
+  .mask-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #181818;
+    transform: scaleX(0);
+  }
 }
 ul {
   position: absolute;
