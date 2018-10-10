@@ -1,15 +1,242 @@
 <template>
-  <div>
-    <h1>About</h1>
-    <footer>
-    <div class="icon-wrapper">
-      <img src="/static/assets/behance.svg" alt="#" class="sns-icon">
-      <img src="/static/assets/facebook.svg" alt="#" class="sns-icon">
-      <img src="/static/assets/instagram.svg" alt="#" class="sns-icon">
-      <img src="/static/assets/linkedin.svg" alt="#" class="sns-icon">
+  <div class="parallax">
+    <div class="parallax__layer parallax__layer--back">
+      <div class="wrapper">
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+      </div>
+      <div class="wrapper">
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+      </div>
+      <div class="wrapper">
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+      </div>
+      <div class="wrapper">
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+      </div>
+      <div class="wrapper">
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+      </div>
+      <div class="wrapper">
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+      </div>
+      <div class="wrapper">
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+        <div>asldkfjasldfkjas;dlkfjas;ldkfjas;ldfkjas;ldfjk</div>
+      </div>
+      
     </div>
-  </footer>
-  </div>
+    <div class="parallax__layer parallax__layer--base">
+      <div class="wrapper">
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+      </div>
+      <div class="wrapper">
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+      </div>
+      <div class="wrapper">
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+      </div>
+      <div class="wrapper">
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+      </div>
+      <div class="wrapper">
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+      </div>
+      <div class="wrapper">
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+      </div>
+      <div class="wrapper">
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+        <div> asdfasdfasdf</div>
+      </div>
+    </div>
+</div>
 </template>
 
 <script>
@@ -24,6 +251,25 @@ export default {
 </script>
 
 <style lang="scss">
+.parallax {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.parallax__layer--base {
+  transform: translateZ(0);
+}
+.parallax__layer--back {
+  transform: translateZ(-1px);
+}
 footer {
   position: fixed;
   bottom: 20px;

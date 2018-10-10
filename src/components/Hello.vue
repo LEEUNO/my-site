@@ -1,5 +1,5 @@
 <template>
-  <div class="g-main-page">
+  <div class="g-main-page" id="g-main-page">
     <!-- header section -->
     <header>
       <!-- menu button wrapper -->
@@ -20,13 +20,11 @@
       <!-- side menu contents -->
       <div class="g-side-menu-contents" id="g-sideMenuContent">
         <ul>
-          <div class="label set-show" id="label1">
-            <!-- <div class="label set-show-up" id="label1"> -->
+          <div class="label label-animation set-show">
             <div class="label-item">01</div>
             <div class="label-line set-banner-line"></div>
             <div class="label-item">someText</div>
           </div>
-          <!-- <div class="label-line set-banner-line"></div> -->
           <li class="list-item"><a href="#">Test list item_1</a></li>
           <li class="list-item"><a href="#">Test list item_2</a></li>
           <li class="list-item"><a href="#">Test list item_3</a></li>
@@ -38,8 +36,7 @@
       <!-- side menu contents banner -->
       <div class="banner-wrapper" id="banner-wrapper">
         <a class="nav-banner">
-          <div class="label set-show" id="label2">
-          <!-- <div class="label set-show-up" id="label1"> -->
+          <div class="label label-animation  set-show">
             <div class="label-item">02</div>
             <div class="label-line set-banner-line"></div>
             <div class="label-item">someText</div>
@@ -54,8 +51,7 @@
             </div>
         </a>
         <a class="nav-banner">
-           <div class="label set-show" id="label3">
-            <!-- <div class="label set-show-up" id="label1"> -->
+           <div class="label label-animation set-show">
             <div class="label-item">03</div>
             <div class="label-line set-banner-line"></div>
             <div class="label-item">someText</div>
@@ -70,54 +66,34 @@
           </div>
         </a>
       </div>
-
-
       <!-- main contents -->
-      <body class="main-contents" v-on:scroll="scrollController" id="g-mainContent">
-        <!-- <div class="animation-title">
-          alkentlaknsdflkansdlfkam
-          <span class="mask-bg"></span>
-        </div> -->
+      <body class="main-contents parallax" @scroll="scrollController('scroll-show')" id="g-mainContent">
         <div class="animatnion-title-wrapper">
-          <div class="animation-title">
-            someText alke
-            <span class="mask-bg"></span>
-          </div>
+          <animation-title
+            title="somtext placeholder"
+          ></animation-title>
           <br>
-          <div class="animation-title">
-            someText alke ntlakn
-            <span class="mask-bg"></span>
-          </div>
+          <animation-title
+            title="somtext placeholder placeholder placeholder"
+          ></animation-title>
         </div>
         <br>
         <div class="list-wrapper">
           <div class="scroll-show box"></div>
           <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
         </div>
         <br>
         <div class="animatnion-title-wrapper">
-          <div class="animation-title">
-            someText alke
-            <span class="mask-bg"></span>
-          </div>
+          <animation-title
+            title="ABSCDEDS KSDJFEI"
+          ></animation-title>
           <br>
-          <div class="animation-title">
-            someText alke ntlakn
-            <span class="mask-bg"></span>
-          </div>
+          <animation-title
+            title="ABSCDEDS KSDJFEasdfasdfasdfI"
+          ></animation-title>
         </div>
         <br>
         <div class="list-wrapper">
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
           <div class="scroll-show box"></div>
           <div class="scroll-show box"></div>
           <div class="scroll-show box"></div>
@@ -126,7 +102,6 @@
         <br>
       </body>
     </div>
-
     <div id="side-menu-bg"></div>
 
   </div>
@@ -134,61 +109,60 @@
 
 <script>
 import { TweenLite, TimelineLite } from 'gsap'
+import AnimationTitle from './partials/AnimationTitle'
 
 export default {
   name: 'Contact',
+  components: {
+    AnimationTitle
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
       isHeaderOpen: true,
-      isSideMenuOpen: false
+      isSideMenuOpen: false,
+      windowOffsetHeight: 0
     }
   },
   mounted () {
     this.isLoaded()
-    this.scrollController()
-    // this.titleAfterAnimation()
   },
   created () {
   },
   methods: {
-    isShown (el) {
-      console.log(el)
+    getWindowOffsetHeight () {
+      const el = document.getElementById('g-main-page')
+      const { offsetHeight } = el
+      this.windowOffsetHeight = offsetHeight
+      return offsetHeight
     },
-    titleAfterAnimation () {
-      const items = document.getElementById('g-mainContent')
-      const windowOffsetHighet = items.offsetHeight
-      const el = document.getElementsByClassName('animation-title')
-
-      for (let item of el) {
+    scrollTrigger () {
+      const domRect = item.getBoundingClientRect().y + 200
+      return domRect < this.windowOffsetHeight
+    },
+    titleAfterAnimation (target) {
+      if (!target) { return }
+      const windowOffsetHeight = this.getWindowOffsetHeight()
+      const titleObj = document.getElementsByClassName(target)
+      for (const item of titleObj) {
         const domRect = item.getBoundingClientRect().y + 200
-        const lastEl = item.children.length - 1
-          if (domRect < windowOffsetHighet) {
-            if (item.children[lastEl].className.includes(' mask-go')) {
-
-            } else {
-              item.children[lastEl].className += ' mask-go'
-              item.className += ' title-go'
-            }
-          } else {
-            
-            }
+        if (domRect < windowOffsetHeight && !item.children[0].className.includes(' mask-go')) {
+            item.children[0].className += ' mask-go'
+            item.className += ' title-go'
         }
+      }
     },
-    scrollController () {
-      this.titleAfterAnimation()
-      const items = document.getElementById('g-mainContent')
-      const el = document.getElementsByClassName('scroll-show')
-      const windowOffsetHighet = items.offsetHeight
-      for (let item of el) {
+    scrollController (target) {
+      if (!target) { return }
+      this.titleAfterAnimation('animation-title')
+      const el = document.getElementsByClassName(target)
+      const windowOffsetHeight = this.getWindowOffsetHeight()
+      for (const item of el) {
         const domRect = item.getBoundingClientRect().top + 100
-        if (domRect < windowOffsetHighet) {
+        if (domRect < windowOffsetHeight) {
           item.style.transform = 'translateZ(0)'
           item.style.opacity = 1
           item.style.transitionDelay = '.2s'
-        } else {
-          item.style.transform = 'translate3D(0,50px,0)'
-          item.style.opacity = 0
         }
       }
     },
@@ -197,118 +171,156 @@ export default {
       setTimeout(function(){
         header.style.transform = 'translateZ(0)'
       }, 100);
+      this.scrollController('scroll-show')
     },
     lineAnimation(target, delayIn, delayOut, isOn) {
+      if (!target) { return }
       const items = document.getElementsByClassName(target)
       if (isOn) {
         for (let item of items){
           item.style.transform = 'scaleX(1)'
-          item.style.transitionDelay = delayIn
           item.style.transformOrigin = 'left center'
+          item.style.transitionDelay = delayIn
         }
       } else {
         for (let item of items){
-          item.style.transitionDelay = delayOut
           item.style.transformOrigin = 'right center'
+          item.style.transitionDelay = delayOut
           setTimeout(function() {
             item.style.transform = 'scaleX(0)'
           }, 1000)
         }
       }
     },
-    showAnimation (target, direction, delayIn, delayOut, isOn, isArray) {
-      if (isArray === true) {
-        const items = document.getElementsByClassName(target)
-        if (isOn) {
-          for (let item of items ) {
-            item.style.pointerEvents = 'auto'
-            item.style.opacity = 1
-            item.style.transitionDelay = delayIn
-            item.style.transform = 'translateZ(0)'
-          }
-        } else {
-          for (let item of items) {
-            item.style.pointerEvents = 'none'
-            item.style.opacity = 0
-            item.style.transitionDelay = delayOut
-            item.style.transform = 'translate3d(0,-40px,0)'
-            setTimeout(function() {
-            item.style.transform = 'translateZ(0)'
-            }, 1000)
-          }
-        }
-        return
-      }
-      const item = document.getElementById(target)
-      if (direction === 'up') {
-        if (isOn) {
-          item.style.transform = 'translateZ(0)'
-          item.style.opacity = 1
-          item.style.transitionDelay = delayIn
-        } else {
-          item.style.opacity = 0
-          item.style.transitionDelay = delayOut
-          setTimeout(function() {
-            item.style.transform = 'translate3d(0,50px,0)'
-          }, 1000)
-        }
-      } else if (direction === 'right') {
-        if (isOn) {
-          item.style.transform = 'scaleX(1)'
-          item.style.transitionDelay = delayIn
-          item.style.transformOrigin = 'left center'
-        } else {
-          item.style.transitionDelay = delayOut
-          item.style.transformOrigin = 'right center'
-        }
-      } else if (direction === false) {
-        if (isOn) {
-          item.style.pointerEvents = 'auto'
-          item.style.opacity = 1
-          item.style.transitionDelay = delayIn
-          item.style.transform = 'translateZ(0)'
-        } else {
-          item.style.pointerEvents = 'none'
-          item.style.opacity = 0
-          item.style.transitionDelay = delayOut
-          item.style.transform = 'translate3d(0,-40px,0)'
-          setTimeout(function() {
-          item.style.transform = 'translateZ(0)'
-          }, 1000)
-        }
+    addStyle (item, styleObj, initialize) {
+      Object.assign(item.style, styleObj)
+      if (initialize) {
+        setTimeout(() => {
+          item.style.transform = initialize
+        }, 1000)
       }
     },
-    headerAnimation (isOn) {
-      const header = document.getElementById('g-header')
+    showAnimationByClass (target, direction, delayIn, delayOut, isOn) {
+      if (!target) { return }
+
+      const items = document.getElementsByClassName(target)
+      console.log(items)
       if (isOn) {
-        header.style.transform = 'translate3d(-100%,0,0)'
-        header.style.transitionDelay = '0s'
+        for (const item of items ) {
+          this.addStyle(item, {
+            pointerEvents: 'auto',
+            opacity: 1,
+            transform: 'translateZ(0)',
+            transitionDelay: delayIn
+          })
+        }
       } else {
-        header.style.transform = 'translateZ(0)'
-        header.style.transitionDelay = '1s'
+        for (const item of items) {
+          this.addStyle(item, {
+            pointerEvents: 'none',
+            opacity: 0,
+            transform: 'translate3d(0,-40px,0)',
+            transitionDelay: delayOut
+          }, 'translateZ(0)')
+          
+        }
       }
     },
-    sideMenuListAnimation (isOn) {
-      const listItem = document.getElementsByTagName('li')
+    showAnimationById (target, direction, delayIn, delayOut, isOn) {
+      if (!target) { return }
+      const item = document.getElementById(target)
+      console.log(Object.keys(item))
+      switch (direction) {
+        case 'up': {
+          if (isOn) {
+            this.addStyle(item, {
+              pointerEvents: 'auto',
+              opacity: 1,
+              transform: 'translateZ(0)',
+              transitionDelay: delayIn
+            })
+          } else {
+            this.addStyle(item, {
+            opacity: 0,
+            transitionDelay: delayOut
+            }, 'translate3d(0,50px,0)')
+          }
+          break;
+        }
+        case 'right': {
+          if (isOn) {
+            this.addStyle(item, {
+              transform: 'scaleX(1)',
+              transformOrigin: 'left center',
+              transitionDelay: delayIn
+            })
+          } else {
+            this.addStyle(item, {
+              transformOrigin: 'right center',
+              transitionDelay: delayOut
+            })
+          }
+          break;
+        }
+        case undefined: {
+          if (isOn) {
+            this.addStyle(item, {
+              opacity: 1,
+              transform: 'translateZ(0)',
+              transitionDelay: delayIn
+            })
+          } else {
+            this.addStyle(item, {
+              opacity: 0,
+              transform: 'translate3d(0,-40px,0)',
+              transitionDelay: delayOut
+            }, 'translateZ(0)')
+          }
+          break;
+        }
+        default:
+          break;
+      }
+    },
+    headerAnimation (target, isOn) {
+      if (!target) { return }
+      const header = document.getElementById(target)
       if (isOn) {
-        setTimeout(function(){
+        this.addStyle(header, {
+          transform: 'translate3d(-100%,0,0)',
+          transitionDelay: '0s'
+        })
+      } else {
+        this.addStyle(header, {
+          transform: 'translateZ(0)',
+          transitionDelay: '1s'
+        })
+      }
+    },
+    sideMenuListAnimation (target, isOn) {
+      if (!target) { return }
+      const listItem = document.getElementsByClassName(target)
+      if (isOn) {
+        setTimeout(() => {
           let indexCount = .5
           for (let listTag of listItem) {
-            listTag.style.pointerEvents = 'auto'
-            listTag.style.transform = 'translateY(0)'
-            listTag.style.opacity = 1
-            listTag.style.transitionDelay = indexCount +'s'
+            this.addStyle(listTag, {
+              opacity: 1,
+              transform: 'translateY(0)',
+              transitionDelay: indexCount +'s'
+            })
             indexCount += 0.05
           }
         }, 400)
       } else {
-        setTimeout(function(){
+        setTimeout(() => {
           let indexCount = 0
           for (let listTag of listItem) {
-            listTag.style.pointerEvents = 'none'
-            listTag.style.transform = 'translate3d(0,-50px,0)'
-            listTag.style.opacity = 0
-            listTag.style.transitionDelay = indexCount +'s'
+            this.addStyle(listTag, {
+              opacity: 0,
+              transform: 'translate3d(0,-50px,0)',
+              transitionDelay: indexCount +'s'
+            })
             indexCount += 0.05
           }
         }, 100)
@@ -318,74 +330,89 @@ export default {
       for (let listTag of listItem) {
         listTag.style.transform = 'translate3d(0,50px,0)'
       }
-        
     },
-    bannerBgAnimation (isOn) {
-      const menuBanner = document.getElementsByClassName('banner-bg')
+    bannerBgAnimation (target, isOn) {
+      if (!target) { return }
+      const menuBanner = document.getElementsByClassName(target)
       if (isOn) {
         for (let banner of menuBanner) {
-          banner.style.transformOrigin = 'bottom'
-          banner.style.transform = 'scaleY(1)'
-          banner.style.transitionDelay = '.8s'
+          this.addStyle(banner, {
+            transformOrigin: 'bottom',
+            transform: 'scaleY(1)',
+            transitionDelay: '.8s'
+          })
         }
       } else {
-          for (let banner of menuBanner) {
-          banner.style.transformOrigin = 'top'
-          banner.style.transform = 'scaleY(0)'
-          banner.style.transitionDelay = '.15s'
+        for (let banner of menuBanner) {
+          this.addStyle(banner, {
+            transformOrigin: 'top',
+            transform: 'scaleY(0)',
+            transitionDelay: '.15s'
+          })
         }
+      }
+    },
+    depthController (target, direction) {
+      if (!target) { return }
+      const el = document.getElementById(target)
+      switch (direction) {
+        case 'forward':
+          el.style.zIndex = 2
+          break;
+        case 'backward':
+          setTimeout(function(){
+          el.style.zIndex = -999
+          }, 500)
+          break;
+        default:
+          break;
       }
     },
     sideMenuBgAnimation (isOn) {
       const sideMenuBg = document.getElementById('side-menu-bg')
-      const bannerWrapper = document.getElementById('banner-wrapper')
       if (isOn) {
-        bannerWrapper.style.zIndex = 2
-        sideMenuBg.style.transform = 'scaleX(1)'
-        sideMenuBg.style.transitionDelay = '.5s'
+        this.addStyle(sideMenuBg, {
+          transform: 'scaleX(1)',
+          transitionDelay: '.5s'
+        })
+        this.depthController('banner-wrapper', 'forward')
       } else {
-        sideMenuBg.style.transform = 'scaleX(0)'
-        sideMenuBg.style.transitionDelay = '.5s'
-        setTimeout(function(){
-         bannerWrapper.style.zIndex = -999
-        }, 1000)
+        this.addStyle(sideMenuBg, {
+          transform: 'scaleX(0)',
+          transitionDelay: '.5s'
+        })
+        this.depthController('banner-wrapper', 'backward')
+      }
+    },
+    closeButtonAnimation (isOn) {
+      const closeButton = document.getElementById('close-button')
+      if (isOn) {
+        this.addStyle(closeButton, {
+          transform: 'translateZ(0)',
+          transitionDelay: '1s'
+        })
+        this.depthController('g-sideMenuContent', 'forward')
+      } else {
+        this.addStyle(closeButton, {
+          transform: 'translate3d(-100%,0,0)',
+          transitionDelay: '.5s'
+        })
+        this.depthController('g-sideMenuContent', 'backward')
       }
     },
     openSideMenu () {
-      // const domRect = mainContents.getBoundingClientRect()
-      
       const isOn = this.isSideMenuOpen = !this.isSideMenuOpen
+      this.closeButtonAnimation(isOn)
+      this.showAnimationByClass('label-animation', undefined, '1.2s', '0s', isOn)
+      this.showAnimationByClass('button-wrapper', undefined, '1.2s', '0s', isOn)
+      this.showAnimationById('title1', 'up', '1.2s', '.2s', isOn)
+      this.showAnimationById('title2', 'up', '1.2s', '.2s', isOn)
 
-      const lists = document.getElementById('g-sideMenuContent')
-      
-      const mainContents = document.getElementById('g-mainContent')
-      // const titleAnimations = document.getElementsByClassName('title-animation')
-      const closeButton = document.getElementById('close-button')
-      if (isOn) {
-        lists.style.zIndex = 1
-        mainContents.style.pointerEvents = 'none'
-        closeButton.style.transform = 'translateZ(0)'
-        closeButton.style.transitionDelay = '1s'
-      } else {
-        mainContents.style.pointerEvents = 'auto'
-        closeButton.style.transform = 'translate3d(-100%,0,0)'
-        closeButton.style.transitionDelay = '.5s'
-        setTimeout(function(){
-         lists.style.zIndex = -999
-        }, 1000)
-      }
-      this.showAnimation('label1', false, '1.2s', '0s', isOn)
-      this.showAnimation('label2', false, '1.2s', '0s', isOn)
-      this.showAnimation('label3', false, '1.2s', '0s', isOn)
-      this.showAnimation('button-wrapper', false, '1.2s', '0s', isOn, true)
       this.lineAnimation('set-banner-line', '1.5s', '0s', isOn)
-      
-      this.showAnimation('title1', 'up', '1.2s', '.2s', isOn)
-      this.showAnimation('title2', 'up', '1.2s', '.2s', isOn)
       this.sideMenuBgAnimation(isOn)
-      this.headerAnimation(isOn)
-      this.bannerBgAnimation(isOn)
-      this.sideMenuListAnimation(isOn)
+      this.headerAnimation('g-header', isOn)
+      this.bannerBgAnimation('banner-bg', isOn)
+      this.sideMenuListAnimation('list-item', isOn)
       
     }
   }
@@ -393,6 +420,148 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+  .parallax {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 500px; /* fallback for older browsers */
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-perspective: 300px;
+    perspective: 300px;
+    -webkit-perspective-origin-x: 100%;
+    perspective-origin-x: 100%;
+  }
+
+  .parallax__group {
+    position: relative;
+    height: 500px; /* fallback for older browsers */
+    height: 100vh;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  .parallax__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transform-origin-x: 100%;
+    transform-origin-x: 100%;
+  }
+
+  .parallax__layer--fore {
+    -webkit-transform: translateZ(90px) scale(.7);
+    transform: translateZ(90px) scale(.7);
+    z-index: 1;
+  }
+
+  .parallax__layer--base {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 4;
+  }
+
+  .parallax__layer--back {
+    -webkit-transform: translateZ(-300px) scale(2);
+    transform: translateZ(-300px) scale(2);
+    z-index: 3;
+  }
+
+  .parallax__layer--deep {
+    -webkit-transform: translateZ(-600px) scale(3);
+    transform: translateZ(-600px) scale(3);
+    z-index: 2;
+  }
+
+
+  /* demo styles
+  --------------------------------------------- */
+
+  body, html {
+    overflow: hidden;
+  }
+
+  body {
+    font: 100% / 1.5 Arial;
+  }
+
+  * {
+    margin:0;
+    padding:0;
+  }
+
+  .parallax {
+    font-size: 200%;
+  }
+
+   /* centre the content in the parallax layers */
+  .title {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+
+
+  /* style the groups
+  --------------------------------------------- */
+
+  #group1 {
+    z-index: 5; /* slide over group 2 */
+  }
+  #group1 .parallax__layer--base {
+    background: rgb(102,204,102);
+  }
+
+  #group2 {
+    z-index: 3; /* slide under groups 1 and 3 */
+  }
+  #group2 .parallax__layer--back {
+    background: rgb(123,210,102);
+  }
+
+  #group3 {
+    z-index: 4; /* slide over group 2 and 4 */
+  }
+  #group3 .parallax__layer--base {
+    background: rgb(153,216,101);
+  }
+
+  #group4 {
+    z-index: 2; /* slide under group 3 and 5 */
+  }
+  #group4 .parallax__layer--deep {
+    background: rgb(184,223,101);
+  }
+
+  #group5 {
+    z-index: 3; /* slide over group 4 and 6 */
+  }
+  #group5 .parallax__layer--base {
+    background: rgb(214,229,100);
+  }
+
+  #group6 {
+    z-index: 2; /* slide under group 5 and 7 */
+  }
+  #group6 .parallax__layer--back {
+    background: rgb(245,235,100);
+  }
+
+  #group7 {
+    z-index: 3; /* slide over group 7 */
+  }
+  #group7 .parallax__layer--base {
+    background: rgb(255,241,100);
+  }
+
 .button {
   cursor: pointer;
 }
@@ -626,7 +795,7 @@ export default {
           content: "";
           display: block;
           border-radius: inherit;
-          background-color: #dedede;
+          background-color: #181818;
           width: 60px;
           height: 60px;
           animation: scale-out .3s cubic-bezier(.4,0,0,1);
@@ -667,6 +836,7 @@ export default {
       overflow-y: scroll;
       -webkit-overflow-scrolling: touch;
       padding: 20px;
+      transform-style: preserve-3d;
       top: 0;
       left: 0;
     }
@@ -680,36 +850,7 @@ h1 {
   animation-delay: .5s;
   animation-fill-mode: forwards;
 }
-.mask-go {
-  animation: title-after 1s cubic-bezier(.4,0,0,1);
-  animation-delay: .2s;
-  animation-fill-mode: forwards;
-}
-.title-go {
-  animation: title 1s cubic-bezier(.4,0,0,1);
-  animation-delay: .2s;
-  animation-fill-mode: forwards;
-}
-.animation-title {
-  position: relative;
-  // max-width: 400px;
-  display: inline-block;
-  font-weight: 100;
-  color: transparent;
-  font-size: 52px;
-  p {
-    display: inline-block;
-  }
-  .mask-bg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #181818;
-    transform: scaleX(0);
-  }
-}
+
 ul {
   position: absolute;
   padding: 0 100px;
@@ -748,12 +889,6 @@ li {
     } 
 }
 
-@keyframes title-after {
-    0% {transform: scaleX(0); transform-origin: left;}
-    50% {transform: scaleX(1); transform-origin: left;}
-    51% {transform: scaleX(1); transform-origin: right;}
-    100% {transform: scaleX(0); transform-origin: right;}
-}
 @keyframes scale-in {
     0% {transform: scale(0);}
     50% {transform: scale(1.15);}
@@ -764,12 +899,7 @@ li {
     50% {transform: scale(1.1);}
     100% {transform: scale(0);}
 }
-@keyframes title {
-    0% {color: #ffffff;}
-    50% {color: #ffffff;}
-    51% {color: #181818;}
-    100% {color: #181818;}
-}
+
 @media screen and (max-width: 750px) {
   h1 {
     margin-top: 120px;
