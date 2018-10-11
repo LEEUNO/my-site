@@ -102,8 +102,8 @@
           ></animation-title>
         </div>
         <br>
-        <section class="section" style="position:static; height:200px;">
-          <div class="absolute" style="position: absolute; width: 100%; height: 500px; margin-top: 100px; z-index:2;">
+        <section class="section" style="position:static;">
+          <div class="absolute" style="position: absolute; width: 100%; margin-top: 100px; z-index:2;">
             <div class="container">
               <div class="row">
                 <div class="at1">
@@ -125,6 +125,7 @@
             </div>
           </div>
         </section>
+        
         <div class="list-wrapper">
           <div class="scroll-show box-wrapper">
             <div class="box"></div>
@@ -139,8 +140,8 @@
             <div class="box"></div>
           </div>
         </div>
-        <section class="section" style="position:static; height:200px;">
-          <div class="absolute" style="position: absolute; width: 100%; height: 500px; margin-top: 100px; z-index:2;">
+        <section class="section" style="position:static;">
+          <div class="absolute" style="position: absolute; width: 100%; margin-top: 100px; z-index:2;">
             <div class="container">
               <div class="row">
                 <div class="at1">
@@ -154,7 +155,7 @@
                   </div>
                 </div>
                 <div class="at1">
-                  <div class="rellax box2" data-rellax-speed="-4" data-percentage="0.5">
+                  <div class="rellax box2" data-rellax-speed="-4">
                     I’m that default chill speed of "-10"
                   </div>
                 </div>
@@ -162,6 +163,7 @@
             </div>
           </div>
         </section>
+        
         <div class="list-wrapper">
           <div class="scroll-show box-wrapper">
             <div class="box"></div>
@@ -172,6 +174,12 @@
             <div class="box"></div>
             <div class="box"></div>
           </div>
+          <section class="section" style="position:static;">
+            <div style="margin: 0 auto 70px; font-size:24px;" class="animation-title">
+              <animation-title
+                title="HOHWOHOWHOWHOWHO WHOHWOHWOHWOHWOHW"
+              ></animation-title></div>
+          </section>
           <div class="scroll-show box-wrapper">
             <div class="box"></div>
           </div>
@@ -485,10 +493,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .section {
+    height: auto;
+  }
   .container {
     position: relative;
     width: 100%;
-    height: 400px;
+    // height: 400px;
     .row {
       width: 100%;
       position: absolute;
@@ -512,146 +523,6 @@ export default {
         }
       }
     }
-  }
-  .parallax {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 500px; /* fallback for older browsers */
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-perspective: 300px;
-    perspective: 300px;
-    -webkit-perspective-origin-x: 100%;
-    perspective-origin-x: 100%;
-  }
-
-  .parallax__group {
-    position: relative;
-    height: 500px; /* fallback for older browsers */
-    height: 100vh;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
-
-  .parallax__layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    -webkit-transform-origin-x: 100%;
-    transform-origin-x: 100%;
-  }
-
-  .parallax__layer--fore {
-    -webkit-transform: translateZ(90px) scale(.7);
-    transform: translateZ(90px) scale(.7);
-    z-index: 1;
-  }
-
-  .parallax__layer--base {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    z-index: 4;
-  }
-
-  .parallax__layer--back {
-    -webkit-transform: translateZ(-300px) scale(2);
-    transform: translateZ(-300px) scale(2);
-    z-index: 3;
-  }
-
-  .parallax__layer--deep {
-    -webkit-transform: translateZ(-600px) scale(3);
-    transform: translateZ(-600px) scale(3);
-    z-index: 2;
-  }
-
-
-  /* demo styles
-  --------------------------------------------- */
-
-  body, html {
-    overflow: hidden;
-  }
-
-  body {
-    font: 100% / 1.1 Arial;
-  }
-
-  * {
-    margin:0;
-    padding:0;
-  }
-
-  .parallax {
-    font-size: 200%;
-  }
-
-   /* centre the content in the parallax layers */
-  .title {
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }
-
-
-
-  /* style the groups
-  --------------------------------------------- */
-
-  #group1 {
-    z-index: 5; /* slide over group 2 */
-  }
-  #group1 .parallax__layer--base {
-    background: rgb(102,204,102);
-  }
-
-  #group2 {
-    z-index: 3; /* slide under groups 1 and 3 */
-  }
-  #group2 .parallax__layer--back {
-    background: rgb(123,210,102);
-  }
-
-  #group3 {
-    z-index: 4; /* slide over group 2 and 4 */
-  }
-  #group3 .parallax__layer--base {
-    background: rgb(153,216,101);
-  }
-
-  #group4 {
-    z-index: 2; /* slide under group 3 and 5 */
-  }
-  #group4 .parallax__layer--deep {
-    background: rgb(184,223,101);
-  }
-
-  #group5 {
-    z-index: 3; /* slide over group 4 and 6 */
-  }
-  #group5 .parallax__layer--base {
-    background: rgb(214,229,100);
-  }
-
-  #group6 {
-    z-index: 2; /* slide under group 5 and 7 */
-  }
-  #group6 .parallax__layer--back {
-    background: rgb(245,235,100);
-  }
-
-  #group7 {
-    z-index: 3; /* slide over group 7 */
-  }
-  #group7 .parallax__layer--base {
-    background: rgb(255,241,100);
   }
 
 .button {
