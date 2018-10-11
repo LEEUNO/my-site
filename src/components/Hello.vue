@@ -66,8 +66,10 @@
           </div>
         </a>
       </div>
+      
       <!-- main contents -->
-      <body class="main-contents parallax" @scroll="scrollController('scroll-show')" id="g-mainContent">
+      <!-- <body class="main-contents rellax" @scroll="scrollController('scroll-show')" id="g-mainContent" data-rellax-speed="-2"> -->
+      <body class="main-contents" @scroll="scrollController('scroll-show')" id="g-mainContent">
         <div class="animatnion-title-wrapper">
           <animation-title
             title="somtext"
@@ -93,6 +95,67 @@
           ></animation-title>
         </div>
         <br>
+
+        
+        <section class="section" style="position:static; height:200px;">
+          <div class="absolute" style="position: absolute; width: 100%; height: 500px; margin-top: 100px; z-index:2;">
+            <div class="container">
+              <div class="row">
+                <div class="at1">
+                  <div class="rellax box2" data-rellax-speed="-1">
+                    I’m that default chill speed of "7"
+                  </div>
+                </div>
+                <div class="at1">
+                  <div class="rellax box2" data-rellax-speed="2">
+                    I’m that default chill speed of "2"
+                  </div>
+                </div>
+                <div class="at1">
+                  <div class="rellax box2" data-rellax-speed="-2">
+                    I’m that default chill speed of "-10"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="list-wrapper">
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+          <div class="scroll-show box"></div>
+        </div>
+        <section class="section" style="position:static; height:200px;">
+          <div class="absolute" style="position: absolute; width: 100%; height: 500px; margin-top: 100px; z-index:2;">
+            <div class="container">
+              <div class="row">
+                <div class="at1">
+                  <div class="rellax box2" data-rellax-speed="-1">
+                    I’m that default chill speed of "7"
+                  </div>
+                </div>
+                <div class="at1">
+                  <div class="rellax box2" data-rellax-speed="2">
+                    I’m that default chill speed of "2"
+                  </div>
+                </div>
+                <div class="at1">
+                  <div class="rellax box2" data-rellax-speed="-2">
+                    I’m that default chill speed of "-10"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- <article class="content">
+          <div class="one rellax" data-rellax-speed="4">Faster</div>
+          <div class="two">No parallax</div>
+          <div class="three rellax" data-rellax-speed="-4">Slower</div>
+        </article> -->
+
+
         <div class="list-wrapper">
           <div class="scroll-show box"></div>
           <div class="scroll-show box"></div>
@@ -103,13 +166,13 @@
       </body>
     </div>
     <div id="side-menu-bg"></div>
-
+    
   </div>
 </template>
 
 <script>
-import { TweenLite, TimelineLite } from 'gsap'
 import AnimationTitle from './partials/AnimationTitle'
+import Rellax from 'rellax'
 
 export default {
   name: 'Contact',
@@ -121,13 +184,18 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       isHeaderOpen: true,
       isSideMenuOpen: false,
-      windowOffsetHeight: 0
+      windowOffsetHeight: 0,
+      rellax: null
     }
   },
+  created () {
+    },
   mounted () {
     this.isLoaded()
-  },
-  created () {
+    const rellax = new Rellax('.rellax', {
+      wrapper: '.main-contents',
+      center: true
+    })
   },
   methods: {
     getWindowOffsetHeight () {
@@ -404,6 +472,61 @@ export default {
 
 <style lang="scss" scoped>
 
+.content {
+  align-items: center;
+  display: flex;
+  // height: 100vh;
+  justify-content: center;
+  margin: 0;
+  max-width: 100%;
+  width: 100vw;
+  div {
+    background: #333;
+    font-size: 30px;
+    font-weight: bold;
+    height: 200px;
+    line-height: 200px;
+    margin: 1em;
+    text-align: center;
+    width: 300px;
+  }
+  .one {
+    background-color: #EC368D;
+  }
+  .two {
+    background-color: #333;
+  }
+  .three {
+    background-color: #440381;
+  }
+}
+
+  .container {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    .row {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      .at1 {
+        flex-grow: 1;
+        text-align: center;
+        .box2 {
+          display: flex;
+          align-items: center;
+          width: 200px;
+          height: 200px;
+          padding: 24px;
+          background-color: #3150ff;
+          color: #ffffff;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
   .parallax {
     position: fixed;
     top: 0;
@@ -469,7 +592,7 @@ export default {
   }
 
   body {
-    font: 100% / 1.5 Arial;
+    font: 100% / 1.1 Arial;
   }
 
   * {
