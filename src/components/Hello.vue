@@ -70,11 +70,11 @@
       <body class="main-contents parallax" @scroll="scrollController('scroll-show')" id="g-mainContent">
         <div class="animatnion-title-wrapper">
           <animation-title
-            title="somtext placeholder"
+            title="somtext"
           ></animation-title>
           <br>
           <animation-title
-            title="somtext placeholder placeholder placeholder"
+            title="somtext placeholder"
           ></animation-title>
         </div>
         <br>
@@ -89,7 +89,7 @@
           ></animation-title>
           <br>
           <animation-title
-            title="ABSCDEDS KSDJFEasdfasdfasdfI"
+            title="ABSCDEDS KSDJFEfasdfI"
           ></animation-title>
         </div>
         <br>
@@ -229,12 +229,10 @@ export default {
     showAnimationById (target, direction, delayIn, delayOut, isOn) {
       if (!target) { return }
       const item = document.getElementById(target)
-      console.log(Object.keys(item))
       switch (direction) {
-        case 'up': {
+        case 'showUp': {
           if (isOn) {
             this.addStyle(item, {
-              pointerEvents: 'auto',
               opacity: 1,
               transform: 'translateZ(0)',
               transitionDelay: delayIn
@@ -247,22 +245,7 @@ export default {
           }
           break;
         }
-        case 'right': {
-          if (isOn) {
-            this.addStyle(item, {
-              transform: 'scaleX(1)',
-              transformOrigin: 'left center',
-              transitionDelay: delayIn
-            })
-          } else {
-            this.addStyle(item, {
-              transformOrigin: 'right center',
-              transitionDelay: delayOut
-            })
-          }
-          break;
-        }
-        case undefined: {
+        case 'leaveUp': {
           if (isOn) {
             this.addStyle(item, {
               opacity: 1,
@@ -403,10 +386,10 @@ export default {
     openSideMenu () {
       const isOn = this.isSideMenuOpen = !this.isSideMenuOpen
       this.closeButtonAnimation(isOn)
-      this.showAnimationByClass('label-animation', undefined, '1.2s', '0s', isOn)
-      this.showAnimationByClass('button-wrapper', undefined, '1.2s', '0s', isOn)
-      this.showAnimationById('title1', 'up', '1.2s', '.2s', isOn)
-      this.showAnimationById('title2', 'up', '1.2s', '.2s', isOn)
+      this.showAnimationByClass('label-animation', 'leaveUp', '1.2s', '0s', isOn)
+      this.showAnimationByClass('button-wrapper', 'leaveUp', '1.2s', '0s', isOn)
+      this.showAnimationById('title1', 'showUp', '1.2s', '.2s', isOn)
+      this.showAnimationById('title2', 'showUp', '1.2s', '.2s', isOn)
 
       this.lineAnimation('set-banner-line', '1.5s', '0s', isOn)
       this.sideMenuBgAnimation(isOn)
@@ -862,7 +845,6 @@ li {
     line-height: 80px;
     opacity: 0;
     font-size: 4.5rem;
-    line-height: 1;
     margin-bottom: 1.5rem;
     a {
         position: relative;
