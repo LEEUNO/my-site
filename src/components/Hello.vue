@@ -32,7 +32,6 @@
         <div class="label-line set-banner-line"></div>
       </div>
 
-
       <!-- side menu contents banner -->
       <div class="banner-wrapper" id="banner-wrapper">
         <a class="nav-banner">
@@ -66,9 +65,7 @@
           </div>
         </a>
       </div>
-      
       <!-- main contents -->
-      <!-- <body class="main-contents rellax" @scroll="scrollController('scroll-show')" id="g-mainContent" data-rellax-speed="-2"> -->
       <body class="main-contents" @scroll="scrollController('scroll-show')" id="g-mainContent">
         <div class="animatnion-title-wrapper">
           <animation-title
@@ -81,8 +78,18 @@
         </div>
         <br>
         <div class="list-wrapper">
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
+          <div class="scroll-show box-wrapper">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+          </div>
+          <div class="scroll-show box-wrapper">
+            <div class="box"></div>
+          </div>
+          <div class="scroll-show box-wrapper">
+            <div class="box"></div>
+            <div class="box"></div>
+          </div>
         </div>
         <br>
         <div class="animatnion-title-wrapper">
@@ -95,8 +102,6 @@
           ></animation-title>
         </div>
         <br>
-
-        
         <section class="section" style="position:static; height:200px;">
           <div class="absolute" style="position: absolute; width: 100%; height: 500px; margin-top: 100px; z-index:2;">
             <div class="container">
@@ -121,10 +126,18 @@
           </div>
         </section>
         <div class="list-wrapper">
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
+          <div class="scroll-show box-wrapper">
+            <div class="box"></div>
+          </div>
+          <div class="scroll-show box-wrapper">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+          </div>
+          <div class="scroll-show box-wrapper">
+            <div class="box"></div>
+            <div class="box"></div>
+          </div>
         </div>
         <section class="section" style="position:static; height:200px;">
           <div class="absolute" style="position: absolute; width: 100%; height: 500px; margin-top: 100px; z-index:2;">
@@ -149,18 +162,19 @@
             </div>
           </div>
         </section>
-        <!-- <article class="content">
-          <div class="one rellax" data-rellax-speed="4">Faster</div>
-          <div class="two">No parallax</div>
-          <div class="three rellax" data-rellax-speed="-4">Slower</div>
-        </article> -->
-
-
         <div class="list-wrapper">
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
-          <div class="scroll-show box"></div>
+          <div class="scroll-show box-wrapper">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+          </div>
+          <div class="scroll-show box-wrapper">
+            <div class="box"></div>
+            <div class="box"></div>
+          </div>
+          <div class="scroll-show box-wrapper">
+            <div class="box"></div>
+          </div>
         </div>
         <br>
       </body>
@@ -471,40 +485,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.content {
-  align-items: center;
-  display: flex;
-  // height: 100vh;
-  justify-content: center;
-  margin: 0;
-  max-width: 100%;
-  width: 100vw;
-  div {
-    background: #333;
-    font-size: 30px;
-    font-weight: bold;
-    height: 200px;
-    line-height: 200px;
-    margin: 1em;
-    text-align: center;
-    width: 300px;
-  }
-  .one {
-    background-color: #EC368D;
-  }
-  .two {
-    background-color: #333;
-  }
-  .three {
-    background-color: #440381;
-  }
-}
-
   .container {
     position: relative;
     width: 100%;
-    height: 800px;
+    height: 400px;
     .row {
       width: 100%;
       position: absolute;
@@ -512,8 +496,10 @@ export default {
       left: 0;
       display: flex;
       .at1 {
+        display: flex;
         flex-grow: 1;
         text-align: center;
+        justify-content: center;
         .box2 {
           display: flex;
           align-items: center;
@@ -672,16 +658,19 @@ export default {
   cursor: pointer;
 }
 .list-wrapper {
-  .box  {
-      display: flex;
+  .box-wrapper {
+    display: flex;
+    .box  {
+      // display: flex;
       flex-grow: 1;
       margin-right: 20px;
       height: 420px;
-      border-radius: 24px;
+      border-radius: 12px;
       justify-content: center;
       align-items: center;
       background-color: #ededed;
       margin-bottom: 50px;
+    }
   }
 }
 .scroll-show {
