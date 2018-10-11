@@ -131,17 +131,17 @@
             <div class="container">
               <div class="row">
                 <div class="at1">
-                  <div class="rellax box2" data-rellax-speed="-1">
+                  <div class="rellax box2" data-rellax-speed="4">
                     I’m that default chill speed of "7"
                   </div>
                 </div>
                 <div class="at1">
-                  <div class="rellax box2" data-rellax-speed="2">
+                  <div class="box2">
                     I’m that default chill speed of "2"
                   </div>
                 </div>
                 <div class="at1">
-                  <div class="rellax box2" data-rellax-speed="-2">
+                  <div class="rellax box2" data-rellax-speed="-4" data-percentage="0.5">
                     I’m that default chill speed of "-10"
                   </div>
                 </div>
