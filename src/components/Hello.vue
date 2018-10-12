@@ -65,15 +65,16 @@
           </div>
         </a>
       </div>
+
       <!-- main contents -->
       <body class="main-contents" @scroll="scrollController('scroll-show')" id="g-mainContent">
         <div class="animatnion-title-wrapper">
           <animation-title
-            title="somtext"
+            title="someText"
           ></animation-title>
           <br>
           <animation-title
-            title="somtext placeholder"
+            title="someText placeholder"
           ></animation-title>
         </div>
         <br>
@@ -236,7 +237,7 @@ export default {
       const titleObj = document.getElementsByClassName(target)
       for (const item of titleObj) {
         const domRect = item.getBoundingClientRect().y + 200
-        if (domRect < windowOffsetHeight && !item.children[0].className.includes(' mask-go')) {
+        if (domRect < windowOffsetHeight && !item.children[0].className.includes(' mask-go') && !item.className.includes(' title-go')) {
             item.children[0].className += ' mask-go'
             item.className += ' title-go'
         }
