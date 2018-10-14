@@ -158,46 +158,4 @@ footer {
     }
   }
 }
-@media screen and (max-width: 750px) {
-  nav {
-      .logo {
-      }
-      .user-info {
-      }
-      .user-info .profile {
-      }
-      .user-info .name {
-      }
-  }
-  section {
-      .side-menu {
-        position: fixed;
-        top: 62px;
-        width: 100%;
-        height: 52px;
-        display: flex;
-          ul {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            margin-left: 0;
-            margin-top: 0;
-              li {
-                display: flex;
-                flex-grow: 1;
-                align-items: center;
-                justify-content: center;
-                margin-bottom: 0;
-              }
-              li:hover {
-              }
-              li.selected {
-              }
-          }
-      }
-      .contents {
-      }
-  }
-}
 </style>
