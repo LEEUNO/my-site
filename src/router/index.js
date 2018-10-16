@@ -6,6 +6,7 @@ import About from '@/components/About'
 import Contact from '@/components/Contact'
 import IntroSequence from '@/components/introSequence/App'
 import SignUp from '@/components/SignUp'
+import HanchaoSignUp from '@/components/HanchaoSignUp'
 
 Vue.use(Router)
 const router = new Router({
@@ -40,6 +41,11 @@ const router = new Router({
       path: '/signup',
       name: 'SignUp',
       component: SignUp
+    },
+    {
+      path: '/hanchao-signup',
+      name: 'HanchaoSignUp',
+      component: HanchaoSignUp
     }
   ]
 })

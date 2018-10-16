@@ -1,6 +1,7 @@
 <template>
   <div>
-    <SignUp v-show="showModal" @close="showModal = false"></SignUp>
+    <HanchaoSignUp v-show="showModal" @close="showModal = false"></HanchaoSignUp>
+    <!-- <SignUp v-show="showModal" @close="showModal = false"></SignUp> -->
     <div class="avatar-wrapper show-up"
          :class="{'translate-position':currentStep > 0}"
          v-if="currentStep !== 4">
@@ -93,7 +94,16 @@
       </div>
     </div>
     <!-- footer -->
-    <footer
+
+    <Footer
+      :currentStep="currentStep"
+      :sequenceSteps="sequenceSteps"
+      :selectedCountry="selectedCountry"
+      :selectedCity="selectedCity"
+      :selectedTheme="selectedTheme"
+      >
+    </Footer>
+    <!-- <footer
       v-if="currentStep !== 0"
       :class="[{ 'show-up': currentStep === 4 }, {'hide-content' : showModal}]">
       <div class="wrapper">
@@ -128,23 +138,26 @@
             <span>Notice</span>
             <p>If you want to save your information,<br/> can you please</p>
           </div>
-          <!-- <router-link to="/signup" tag="button" class="signup-button">Sign up</router-link> -->
           <div tag="button" class="signup-button" @click="showModal = true">Sign up</div>
         </div>
       </div>
-    </footer>
+    </footer> -->
   </div>
 </template>
 
 <script>
 import IntroSequence from './IntroSequence'
 import SignUp from '../../SignUp'
+import Footer from './Footer'
+import HanchaoSignUp from '../../HanchaoSignUp'
 
 export default {
-  name: 'TEST',
+  name: 'hanchaoSignUp',
   components: {
     IntroSequence,
-    SignUp
+    SignUp,
+    HanchaoSignUp,
+    Footer
   },
   data () {
     return {
