@@ -1,43 +1,44 @@
 <template>
   <div>
-    <!-- footer -->
     <footer
-      v-if="currentStep !== 0"
-      :class="[{ 'show-up': currentStep === 4 }, {'hide-content' : showModal}]">
+      :class="[{ 'show-up': qTotalSteps }, {'hide-content' : isModalShow}]">
       <div class="wrapper">
         <div class="gradient-filter"></div>
         <div class="indicator">
           <div class="mark"
-            :class="{ active : currentStep === index }"
+            :class="{ active : qCurrentStep + 1 === index }"
             :key="index"
-            v-for="(step, index) in sequenceSteps">
+            v-for="(step, index) in qTotalSteps">
           </div>
         </div>
         <button
-          v-if="currentStep !== 0"
+          v-if="qCurrentStep !== 4"
           class="back-button-show back-button"
-          @click="$emit(previousStep(currentStep))">
+          @click="$emit('backToPrevious')">
           Back
         </button>
       </div>
       <div
         class="selected-history">
-        <div class="contents-wrapper show-up" v-if="selectedCountry || selectedCity">
-          <div class="selected-contents">You are planning to go to</div>
-          <div class="selected-contents" v-if="selectedCity"><span class="movement">{{ selectedCity }}</span> in</div>
-          <div class="selected-contents" v-if="selectedCountry"><span class="movement">{{ selectedCountry }}</span></div>
-          <div class="selected-contents" v-if="currentStep === 4">and go on a</div>
-          <div class="selected-contents" v-if="currentStep === 4"><span class="movement">{{ selectedTheme }}</span></div>
-          <div class="selected-contents" v-if="currentStep === 4"> theme trip.</div>
+        <!-- You are planning a <theme> trip to <city> for <days>.
+If you’d like to save your information, please click here to -->
+        <div class="contents-wrapper show-up" v-if="selectedDay || selectedCity">
+          <!-- <div class="selected-contents">You are planning to go to</div> -->
+          <!-- <div class="selected-contents">You are planning a </div> -->
+          <div class="selected-contents" v-if="selectedCity && !selectedTheme">You are planning to go to <span class="movement">{{ selectedCity }}</span></div>
+          <div class="selected-contents" v-if="selectedDay && !selectedTheme"> for <span class="movement"> {{ selectedDay }} days.</span></div>
+          <!-- <div class="selected-contents" v-if="selectedTheme">and go on a</div> -->
+          <div class="selected-contents" v-if="selectedCity && selectedDay && selectedTheme">You are planning a <span class="movement">{{selectedTheme}}</span> trip to <span class="movement">{{ selectedCity }}</span> for <span class="movement">{{ selectedDay }} days</span>.</div>
+          <!-- <div class="selected-contents" v-if="selectedTheme"> theme trip.</div> -->
         </div>
-        <div v-if="currentStep === 4" class="contents-wrapper show-up">
+        <div v-if="qCurrentStep === 3" class="contents-wrapper show-up">
           <div class="skip-button">Skip</div>
           <div class="notice">
             <span>Notice</span>
             <p>If you want to save your information,<br/> can you please</p>
           </div>
           <!-- <router-link to="/signup" tag="button" class="signup-button">Sign up</router-link> -->
-          <div tag="button" class="signup-button" @click="$emit(showModal = true)">Sign up</div>
+          <div tag="button" class="signup-button" @click="$emit('modalContoroller')">Sign up</div>
         </div>
       </div>
     </footer>
@@ -48,17 +49,21 @@
 export default {
   name: 'hanchaoSignUp',
   props: {
-    currentStep: {
+    qCurrentStep: {
       Type: Number,
       default: 0
     },
-    sequenceSteps: {
+    isModalShow: {
+      Type: Boolean,
+      default: false
+    },
+    qTotalSteps: {
       Type: Array,
       default: []
     },
-    selectedCountry: {
-      Type: String,
-      default: ''
+    selectedDay: {
+      Type: Number,
+      default: 0
     },
     selectedCity: {
       Type: String,
@@ -73,7 +78,6 @@ export default {
     return {
       introStep: 2,
       counter: 0,
-      showModal: false,
       endIntro: false,
       isNext: false
     }

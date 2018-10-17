@@ -1,308 +1,75 @@
 <template>
   <div>
-    <HanchaoSignUp v-show="showModal" @close="showModal = false"></HanchaoSignUp>
-    <!-- <SignUp v-show="showModal" @close="showModal = false"></SignUp> -->
     <div class="avatar-wrapper show-up"
-         :class="{'translate-position':currentStep > 0}"
-         v-if="currentStep !== 4">
+         :class="{'translate-position':totalStep > 0}">
       <img src="../avatar/logo.svg" alt="avatar">
     </div>
 
-    <!-- Opening -->
-    <IntroSequence @isEnd="nextStep" v-if="!endIntro"></IntroSequence>
-    <div class="content-wrapper" :class="{'hide-content' : showModal}">
-      <div
-        class="sequence"
-        v-if="currentStep === 1">
-        <div class="message show-up">
-          <div class="title movement">
-            <span class="highlight">Nice! </span>Where are you planning to travel?
-          </div>
-        </div>
-        <div class="button-container">
-          <ul>
-            <li
-              class="list-button-show"
-              v-for="(country, index) in contriesArr"
-              v-if="index < counter"
-              :key="index"
-              :value="country"
-              :class="{ active : country === selectedCountry }"
-              @click="nextStep(country)">
-              {{ country }}
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- Cities -->
-      <div
-        class="sequence"
-        v-if="currentStep === 2">
-        <div class="message show-up">
-          <div class="title movement">
-            Which city do you like in this <span class="highlight">{{ selectedCountry }}</span>?
-          </div>
-        </div>
-        <div class="button-container">
-          <ul>
-            <li
-              class="list-button-show"
-              v-for="(city, index) in citiesArr"
-              v-if="index < counter"
-              :key="index"
-              :value="city"
-              :class="{ active : city === selectedCity }"
-              @click="nextStep(city)">
-              {{ city }}
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- Themes -->
-      <div
-        class="sequence"
-        v-if="currentStep === 3">
-        <div class="message show-up">
-          <div class="title movement">
-            <span class="highlight">Good!</span> What is your favorite travel theme?
-          </div>
-        </div>
-        <div class="button-container">
-          <ul>
-            <li
-              class="list-button-show"
-              v-for="(theme, index) in themesArr"
-              v-if="index < counter"
-              :key="index"
-              :value="theme"
-              :class="{ active : theme === selectedTheme }"
-              @click="nextStep(theme)">
-              {{ theme }}
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- Summary -->
-      <div
-        class="sequence"
-        v-if="currentStep === 4">
-        <div class="message show-up">
-          <div class="title movement">
-            <span class="highlight">Got it.</span> Now I know what you are looking for.
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- footer -->
+    <!-- IntroSequence -->
+    <IntroSequence
+      @changeTotalStep="changeTotalStep('Next')"
+      v-if="totalStep === 0">
+    </IntroSequence>
 
-    <Footer
-      :currentStep="currentStep"
-      :sequenceSteps="sequenceSteps"
-      :selectedCountry="selectedCountry"
-      :selectedCity="selectedCity"
-      :selectedTheme="selectedTheme"
-      >
-    </Footer>
-    <!-- <footer
-      v-if="currentStep !== 0"
-      :class="[{ 'show-up': currentStep === 4 }, {'hide-content' : showModal}]">
-      <div class="wrapper">
-        <div class="gradient-filter"></div>
-        <div class="indicator">
-          <div class="mark"
-            :class="{ active : currentStep === index }"
-            :key="index"
-            v-for="(step, index) in sequenceSteps">
-          </div>
-        </div>
-        <button
-          v-if="currentStep !== 0"
-          class="back-button-show back-button"
-          @click="previousStep(currentStep)">
-          Back
-        </button>
-      </div>
-      <div
-        class="selected-history">
-        <div class="contents-wrapper show-up" v-if="selectedCountry || selectedCity">
-          <div class="selected-contents">You are planning to go to</div>
-          <div class="selected-contents" v-if="selectedCity"><span class="movement">{{ selectedCity }}</span> in</div>
-          <div class="selected-contents" v-if="selectedCountry"><span class="movement">{{ selectedCountry }}</span></div>
-          <div class="selected-contents" v-if="currentStep === 4">and go on a</div>
-          <div class="selected-contents" v-if="currentStep === 4"><span class="movement">{{ selectedTheme }}</span></div>
-          <div class="selected-contents" v-if="currentStep === 4"> theme trip.</div>
-        </div>
-        <div v-if="currentStep === 4" class="contents-wrapper show-up">
-          <div class="skip-button">Skip</div>
-          <div class="notice">
-            <span>Notice</span>
-            <p>If you want to save your information,<br/> can you please</p>
-          </div>
-          <div tag="button" class="signup-button" @click="showModal = true">Sign up</div>
-        </div>
-      </div>
-    </footer> -->
+    <!-- QuestionSequence --> 
+    <QuestionSequence
+      v-if="totalStep === 1"
+      :cities="cities"
+      @previousTotalStep="changeTotalStep('Previous')"
+      @changeTotalStep="changeTotalStep('Next')"
+    ></QuestionSequence>
   </div>
 </template>
 
 <script>
 import IntroSequence from './IntroSequence'
+import QuestionSequence from './QuestionSequence'
 import SignUp from '../../SignUp'
-import Footer from './Footer'
 import HanchaoSignUp from '../../HanchaoSignUp'
 
 export default {
   name: 'hanchaoSignUp',
   components: {
     IntroSequence,
+    QuestionSequence,
     SignUp,
-    HanchaoSignUp,
-    Footer
+    HanchaoSignUp
   },
   data () {
     return {
-      contriesArr: ['Korea', 'Japan', 'HongKong', 'Taiwan', 'Greece', 'United States', 'Sweden', 'France', 'Yugoslavia', 'Italy', 'Austria', 'United Kingdom'],
-      citiesArr: ['Aberdeen', 'Abilene', 'Akron', 'Albany', 'Albuquerque', 'Alexandria', 'Allentown', 'Amarillo', 'Anaheim', 'Anchorage'],
-      themesArr: ['familytrip', 'photospot', 'photography', 'shopping', 'relax', 'landmark', 'nature', 'outdooractivity', 'visit', 'foodmarket', 'honeymoon', 'firsttime', 'localexperience'],
-      sequenceSteps: ['intro', 'init', 'selectCountries', 'selectCities', 'selectThemes'],
-      selectedCountry: '',
-      selectedCity: '',
-      selectedTheme: '',
-      isStickerOff: false,
-      currentStep: 0,
-      introStep: 2,
-      currentIntroStep: 0,
-      counter: 0,
-      showModal: false,
-      endIntro: false,
-      isNext: false
+      totalStep: 0,
+      cities:[
+        { 
+          cityName: 'Seoul',
+          themes: ['seoulTheme1','seoulTheme2','seoulTheme3','seoulTheme4','seoulTheme5',] 
+        },
+        {
+          cityName: 'Jeju',
+          themes: ['jejuTheme1', 'jejuTheme2', 'jejuTheme3', 'jejuTheme4', 'jejuTheme5', 'jejuTheme6'] 
+        },
+        { 
+          cityName: 'Busan',
+          themes: ['busanTheme1', 'busanTheme2', 'busanTheme3', 'busanTheme4'] 
+        }
+      ]
     }
   },
   mounted () {
-    // this.displayButton()
-    // this.pathAnimation()
-    // const myTween = new TweenLite.to('.box', 2, {width:100, height:100})
   },
   methods: {
-    pathAnimation () {
-      const path = document.getElementById('return-line')
-      const path2 = document.getElementById('return-arrow')
-      const wrapper = document.getElementById('return-icon')
-
-      const totalLength = path.getTotalLength()
-      const totalLength2 = path2.getTotalLength()
-      
-      path.style.strokeDasharray = totalLength + ' ' + totalLength
-      path2.style.strokeDasharray = totalLength2 + ' ' + totalLength2
-      path.style.strokeDashoffset = totalLength
-      path2.style.strokeDashoffset = totalLength2
-      wrapper.style.transform = 'rotate(120deg)' + 'scale(.3)'
-    },
-    startAnimation (bool) {
-      const wrapper = document.getElementById('return-icon')
-      wrapper.style.transition = 'all .5s ease-in-out'
-      
-
-      const path = document.getElementById('return-line')
-      const totalLength = path.getTotalLength()
-      path.style.transition = 'all .5s ease-in-out'
-      
-
-      const path2 = document.getElementById('return-arrow')
-      const totalLength2 = path2.getTotalLength()
-      path2.style.transition = 'all .5s ease-in-out'
-      
-
-      const flag = bool
-      if (flag) {
-        path.style.strokeDashoffset = 0
-        path2.style.strokeDashoffset = 0
-        wrapper.style.transform = 'rotate(0)' + 'scale(1)'
-      } else {
-        path.style.strokeDashoffset = totalLength
-        path2.style.strokeDashoffset = totalLength2
-        wrapper.style.transform = 'rotate(120deg)' + 'scale(.3)'
-      }
-    },
-    displayButton (selectedValue) {
-      const currentSequence = this.sequenceSteps[this.currentStep]
-      if (selectedValue) {
-        if (currentSequence === 'selectCountries') {
-          this.selectedCountry = selectedValue
-        } else if (currentSequence === 'selectCities') {
-          this.selectedCity = selectedValue
-        } else if (currentSequence === 'selectThemes') {
-          this.selectedTheme = selectedValue
-        }
-      }
-      let tempArr = []
-      const increaseCount = setInterval(() => {
-        switch (currentSequence) {
-          case 'intro':
-            return
-          case 'init':
-            tempArr = this.contriesArr
-            break
-          case 'selectCountries':
-            tempArr = this.citiesArr
-            break
-          case 'selectCities':
-            tempArr = this.themesArr
-            break
-          case 'selectThemes':
-            return
-        }
-        this.counter++
-        if (this.counter === tempArr.length) {
-          clearInterval(increaseCount)
-        }
-      }, 50)
-      this.counter = 0
-    },
-    nextStep (value) {
-      if (this.currentStep < this.sequenceSteps.length - 1) {
-        if (this.sequenceSteps[this.currentStep] === 'init' && value !== this.selectedCountry) {
-          this.selectedCity = ''
-        } else if (this.sequenceSteps[this.currentStep] === 'selectCountries' && value !== this.selectedCity) {
-          this.selectedTheme = ''
-        }
-        this.endIntro = true
-        this.currentStep++
-        this.displayButton(value)
-      }
-    },
-    previousStep () {
-      console.log(this.currentStep)
-      if (this.currentStep === 1) {
-        this.endIntro = false
-        this.currentStep--
-      } else {
-        this.currentStep--
-        this.displayButton()
-      }
-    },
-    introStepChange (val) {
-      if (val === 'next') {
-        if (this.currentIntroStep < this.introStep - 1) {
-          this.currentIntroStep++
-        }
-      } else if (val === 'Previous') {
-        if (this.currentIntroStep !== 0) {
-          this.currentIntroStep--
-        }
+    changeTotalStep (value) {
+      if (value === 'Next') {
+        this.totalStep++
+      } else if (value === 'Previous'){
+        this.totalStep--
       }
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-// .box{width:50px;height:50px;background-color:#000;}
-.hide-content {
-  display: none;
-}
-.return-icon {
-  text-align: center;
-}
+@import 'src/styles/animation.scss';
+
 .avatar-wrapper {
   width: 100%;
   text-align: center;
@@ -315,243 +82,12 @@ export default {
   }
 }
 .translate-position {
-  // height: 56px;
   transition: all .5s cubic-bezier(0, .6, .6, 1.6);
   img {
     transition: all .5s cubic-bezier(0, .6, .6, 1.6);
     width: 34px;
     height: 34px;
   }
-}
-.sequence {
-  padding-bottom: 42px;
-  .message {
-    padding: 12px 12px 24px;
-    opacity: 0;
-    .title {
-      color: #2D343B;
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 38px;
-      text-align: center;
-    }
-    .highlight {
-      color: #0285FF;
-    }
-  }
-  .button-container {
-    position: absolute;
-    max-height: calc(100% - 310px);
-    left: 12px;
-    right: 12px;
-    overflow-y: scroll;
-    ul {
-      list-style: none;
-      padding-bottom: 68px;
-      li {
-        cursor: pointer;
-        display: inline-block;
-        opacity: 0;
-        padding: 8px 12px;
-        color: #0285FF;
-        border: 1px solid #0285FF;
-        border-radius: 20px;
-        margin: 4px;
-        margin-bottom: 12px;
-        transition: all .1s ease-in-out;
-        &.active {
-          background-color: #0285FF;
-          border-color: #0285FF;
-          color: #ffffff;
-          transition: all .1s ease-in-out;
-        }
-        &:hover {
-          background-color: #0285FF;
-          border-color: #0285FF;
-          color: #ffffff;
-          transition: all .1s ease-in-out;
-        }
-      }
-    }
-  }
-}
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: #fff;
-  width: 100%;
-  min-height: 72px;
-  transition: min-height .5s cubic-bezier(0, .6, .6, 1);
-  .wrapper {
-    position: relative;
-    height: 52px;
-    .gradient-filter {
-      position: absolute;
-      pointer-events: none;
-      width: 100%;
-      height: 30px;
-      margin-top: -28px;
-      background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 70%);
-    }
-    .indicator {
-      text-align: center;
-      padding-top: 12px;
-      width: 100%;
-      .mark {
-        display: inline-block;
-        position: relative;
-        margin-right: 8px;
-        width: 24px;
-        height: 4px;
-        background-color: #EDEDED;
-        border-radius: 4px;
-        transform: rotate(0);
-        transition: all .2s cubic-bezier(0, .6, .6, 1);
-        &:first-child {
-          display: none;
-        }
-        &:last-child {
-          margin-right: 0;
-        }
-        &.active {
-          width: 14px;
-          border-radius: 12px;
-          border-radius: 8px;
-          transform: rotate(180deg);
-          transition: all .2s cubic-bezier(0, .6, .6, 1);
-          background-color: #606B78;
-        }
-      }
-    }
-    .back-button {
-      position: absolute;
-      top: 0;
-      width: 52px;
-      height: 52px;
-      opacity: 0;
-      border-radius: 46px;
-      left: 12px;
-      text-align: center;
-      padding: 0;
-      font-size: 14px;
-      color: #ffffff;
-      background-color: #2D343B;
-      font-weight: 400;
-      border: none;
-    }
-  }
-  .selected-history {
-    text-align: center;
-    width: 100%;
-    margin: 0 auto;
-    .contents-wrapper {
-      color: #2D343B;
-      background-color: #fff;
-      font-size: 16px;
-      margin: 12px;
-      padding: 18px 24px;
-      border-radius: 4px 12px 12px 12px;
-      box-shadow: 0 2px 10px #dedede;
-      .selected-contents {
-        display: inline-block;
-        text-align: center;
-        line-height: 28px;
-        span {
-          display: inline-block;
-          font-size: 16px;
-          font-weight: 500;
-          color: #0285FF;
-          transition: all .1s ease-in-out;
-        }
-      }
-      .notice {
-        margin-top: 4px;
-        span {
-          color: #0285FF;
-          font-size: 16px;
-          font-weight: 500;
-        }
-        p {
-          margin-top: 4px;
-          margin-bottom: 16px;
-          font-size: 16px;
-          line-height: 20px;
-          color: #2D343B;
-        }
-      }
-      .skip-button {
-        color: #C4C4C4;
-        position: absolute;
-        top: 12px;
-        right: 16px;
-        font-size: 16px;
-        text-align: right;
-        font-weight: 500;
-      }
-      .signup-button {
-        width: 100%;
-        background-color: #0285FF;
-        padding: 12px 0;
-        border-radius: 50px;
-        border: none;
-        color: #fff;
-        font-size: 16px;
-      }
-    }
-  }
-}
-//animations
-.show-up {
-  animation: moveDownToUp .5s cubic-bezier(0, .6, .6, 1) 0s 1 none;
-  animation-fill-mode: forwards;
-}
-.list-button-show {
-  animation: moveDownToUp .5s cubic-bezier(0, .6, .6, 1) .6s 1 none;
-  animation-fill-mode: forwards;
-}
-.back-button-show {
-  animation: leftToRight .2s cubic-bezier(0, .6, .6, 1) 1s 1 none;
-  animation-fill-mode: forwards;
-}
-.movement {
-  animation: moveUpToDown 1s ease-in-out 0s infinite alternate;
-}
-.remove-sticker {
-  animation: removeSticker 2s cubic-bezier(.75, .01, .63, .87) 0s none;
-  animation-fill-mode: forwards;
-}
-.intro-rise-up {
-  animation: riseUp 1s cubic-bezier(0, .5, .4, 1) 0s 1 none;
-  animation-fill-mode: forwards;
-}
-.intro-rise-up-second {
-  animation: riseUp 1s cubic-bezier(0, .5, .4, 1) .4s 1 none;
-  animation-fill-mode: forwards;
-}
-.intro-rise-up-third {
-  animation: riseUp 1s cubic-bezier(0, .5, .4, 1) .8s 1 none;
-  animation-fill-mode: forwards;
-}
-@keyframes moveDownToUp {
-  from {transform: translateY(24px); opacity: 0;};
-  to {transform: translateY(0); opacity: 1;};
-}
-@keyframes riseUp {
-  0% {transform: translateY(20px); opacity: 0;};
-  100% {transform: translateY(0); opacity: 1;};
-}
-@keyframes leftToRight {
-  from {transform: translateX(-40px); opacity: 0;};
-  to {transform: translateX(0); opacity: 1;};
-}
-@keyframes removeSticker {
-  from {transform: translateX(0) translateY(0) rotate(0);};
-  to {transform: translateX(12px) translateY(100px) rotate(15deg);};
-}
-@keyframes moveUpToDown {
-  from {transform: translateY(-1px);};
-  to {transform: translateY(1px);};
 }
 .modal-enter {
   opacity: 0;
