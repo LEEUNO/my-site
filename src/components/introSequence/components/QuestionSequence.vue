@@ -17,7 +17,7 @@
               :key="city.cityName"
               :value="city.cityName"
               :class="{ active : city.cityName === selectedCity }"
-              @click="selectValue(city.cityName), nextStep() ">
+              @click="selectedValue(city.cityName), nextStep() ">
               {{ city.cityName }}
             </li>
           </ul>
@@ -38,7 +38,7 @@
             class="list-button set-show"
             :key="day"
             :class="{ active : day == selectedDay }"
-            @click="selectValue(day), nextStep()"
+            @click="selectedValue(day), nextStep()"
             v-for="day in days">
               {{day}} Days
             </li>
@@ -60,7 +60,7 @@
               :key="theme"
               :class="{ active : theme == selectedTheme }"
               v-for="theme in themes"
-              @click="selectValue(theme), nextStep()">
+              @click="selectedValue(theme), nextStep()">
               {{theme}}
             </li>
           </ul>
@@ -75,7 +75,7 @@
           </div>
         </div>
       </div>
-      <Footer
+      <QuestionFooter
       v-if="!showModal"
       :qCurrentStep="qCurrentStep"
       :qTotalSteps="qTotalSteps"
@@ -85,17 +85,17 @@
       @modalContoroller="modalContoroller()"
       @backToPrevious="previousStep(qCurrentStep)"
       >
-    </Footer>
+    </QuestionFooter>
   </div>
 </template>
 
 <script>
-import Footer from './Footer'
+import QuestionFooter from './QuestionFooter'
 import HanchaoSignUp from '../../HanchaoSignUp'
 export default {
   name: 'QuestionSeauence',
   components: {
-    Footer,
+    QuestionFooter,
     HanchaoSignUp
   },
   props: {
@@ -106,23 +106,22 @@ export default {
   },
   data () {
     return {
+      showModal: false,
       qTotalSteps: ['init', 'selectCities', 'selectDays', 'selectThemes', 'summary'],
       qCurrentStep: 0,
-      // counter: 0,
       selectedCity: '',
       selectedDay: 0,
       selectedTheme: '',
-      listShowDelay: .05,
       days: [1,2,3,4,5],
-      showModal: false,
-      themes: ['familytrip', 'photospot', 'photography', 'shopping', 'relax', 'landmark', 'nature', 'outdooractivity', 'visit', 'foodmarket', 'honeymoon', 'firsttime', 'localexperience']
+      themes: ['familytrip', 'photospot', 'photography', 'shopping', 'relax', 'landmark', 'nature', 'outdooractivity', 'visit', 'foodmarket', 'honeymoon', 'firsttime', 'localexperience'],
+      listShowDelay: .05
     }
   },
   mounted () {
     this.showListButton(this.listShowDelay)
   },
   methods: {
-    selectValue (val) {
+    selectedValue (val) {
       if (this.qCurrentStep === 0) {
         if (this.selectedCity !== val) {
           this.selectedDay = 0
@@ -172,6 +171,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import 'src/styles/animation.scss';
+
 .sequence {
   padding-bottom: 42px;
   .message {
@@ -194,7 +194,7 @@ export default {
     left: 12px;
     right: 12px;
     overflow-y: scroll;
-    ul {
+    .list-ul {
       list-style: none;
       padding-bottom: 68px;
       .list-button {
@@ -226,7 +226,7 @@ export default {
       .set-show {
         opacity: 0;
         transition: transform .4s cubic-bezier(0, .6, .6, 1), opacity .8s cubic-bezier(0, .6, .6, 1);
-        transform: translate3d(0,40px,0);
+        transform: translate3d(0,30px,0);
         transform-origin: center bottom;
       }
     }

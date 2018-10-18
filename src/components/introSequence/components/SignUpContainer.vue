@@ -28,7 +28,7 @@ import SignUp from '../../SignUp'
 import HanchaoSignUp from '../../HanchaoSignUp'
 
 export default {
-  name: 'hanchaoSignUp',
+  name: 'signUpContainer',
   components: {
     IntroSequence,
     QuestionSequence,
@@ -53,8 +53,6 @@ export default {
         }
       ]
     }
-  },
-  mounted () {
   },
   methods: {
     changeTotalStep (value) {
@@ -99,7 +97,7 @@ export default {
 
 .modal-enter .modal-container,
 .modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
 }
 </style>

@@ -24,20 +24,16 @@
           </g>
       </svg>
     </div>
-    <Container></Container> 
+    <SignUpContainer></SignUpContainer> 
   </div>
 </template>
 
 <script>
-import Container from './components/Container'
+import SignUpContainer from './components/SignUpContainer'
 export default {
-  name: 'TEST',
+  name: 'app',
   components: {
-    Container
-  },
-  data () {
-    return {
-    }
+    SignUpContainer
   }
 }
 </script>

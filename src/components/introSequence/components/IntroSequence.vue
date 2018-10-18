@@ -80,6 +80,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import 'src/styles/animation.scss';
+
 .sequence {
   padding-bottom: 42px;
   .intro-button-wrapper {
