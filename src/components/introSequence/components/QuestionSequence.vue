@@ -10,9 +10,9 @@
           </div>
         </div>
         <div class="button-container">
-          <ul>
+          <ul class="list-ul">
             <li
-              class="set-show"
+              class="list-button set-show"
               v-for="city in cities"
               :key="city.cityName"
               :value="city.cityName"
@@ -33,9 +33,9 @@
           
         </div>
         <div class="button-container">
-          <ul>
+          <ul class="list-ul">
             <li
-            class="set-show"
+            class="list-button set-show"
             :key="day"
             :class="{ active : day == selectedDay }"
             @click="selectValue(day), nextStep()"
@@ -54,9 +54,9 @@
           </div>
         </div>
         <div class="button-container">
-          <ul>
+          <ul class="list-ul">
             <li
-              class="set-show"
+              class="list-button set-show"
               :key="theme"
               :class="{ active : theme == selectedTheme }"
               v-for="theme in themes"
@@ -69,7 +69,7 @@
       <div
         class="sequence"
         v-if="qCurrentStep === 3">
-        <div class="message show-up">
+        <div class="message show-up" v-if="!showModal">
           <div class="title movement">
             <span class="highlight">Brilliant!</span> Now I know what you're looking for!
           </div>
@@ -112,13 +112,14 @@ export default {
       selectedCity: '',
       selectedDay: 0,
       selectedTheme: '',
+      listShowDelay: .05,
       days: [1,2,3,4,5],
       showModal: false,
       themes: ['familytrip', 'photospot', 'photography', 'shopping', 'relax', 'landmark', 'nature', 'outdooractivity', 'visit', 'foodmarket', 'honeymoon', 'firsttime', 'localexperience']
     }
   },
   mounted () {
-    this.showListButton(0)
+    this.showListButton(this.listShowDelay)
   },
   methods: {
     selectValue (val) {
@@ -143,11 +144,10 @@ export default {
       const list = document.getElementsByTagName('li')
       setTimeout(function() {
         for (const item of list) {
-          // item.className += ' show-up'
           item.style.transform = 'translateZ(0)'
           item.style.opacity = 1
           item.style.transitionDelay = delay +'s'
-          delay += .04
+          delay += .08
         }
       }, 500)
     },
@@ -156,7 +156,7 @@ export default {
         this.$emit('previousTotalStep')
       } else {
         this.qCurrentStep--
-        this.showListButton(0)
+        this.showListButton(this.listShowDelay)
       }
     },
     nextStep () {
@@ -164,7 +164,7 @@ export default {
         this.$emit('changeTotalStep')
         return
       }
-      this.showListButton(0)
+      this.showListButton(this.listShowDelay)
       this.qCurrentStep++
     }
   }
@@ -175,7 +175,7 @@ export default {
 .sequence {
   padding-bottom: 42px;
   .message {
-    padding: 12px 12px 24px;
+    padding: 32px 12px 24px;
     opacity: 0;
     .title {
       color: #2D343B;
@@ -197,7 +197,7 @@ export default {
     ul {
       list-style: none;
       padding-bottom: 68px;
-      li {
+      .list-button {
         cursor: pointer;
         display: inline-block;
         opacity: 0;

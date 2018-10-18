@@ -83,10 +83,10 @@ export default {
 }
 .translate-position {
   transition: all .5s cubic-bezier(0, .6, .6, 1.6);
+  display: none;
   img {
     transition: all .5s cubic-bezier(0, .6, .6, 1.6);
-    width: 34px;
-    height: 34px;
+    opacity: 0;
   }
 }
 .modal-enter {

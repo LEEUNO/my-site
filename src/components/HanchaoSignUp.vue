@@ -11,15 +11,34 @@
           <div class="title">Sign Up</div>
       </div>
       <div class="contents-wrapper">
-             <div class="input-wrapper">
+            <div class="input-wrapper">
                 <div class="label">
-                    Where do you come from?
+                    Name
                 </div>
-                <input type="text" placeholder="Type your County and City">
+                <input type="text" placeholder="Type your region">
             </div>
             <div class="input-wrapper">
                 <div class="label">
-                    Register your email.
+                    Gender
+                </div>
+                <div class="button-wrapper">
+                    <div class="button-style" :class="{'active' : selectedGender === 'Male'}" @click="selectedGender = 'Male'">
+                        Male
+                    </div>
+                    <div class="button-style" :class="{'active' : selectedGender === 'Female'}" @click="selectedGender = 'Female'">
+                        Female
+                    </div>
+                </div>
+            </div>
+             <div class="input-wrapper">
+                <div class="label">
+                    Region
+                </div>
+                <input type="text" placeholder="Type your region">
+            </div>
+            <div class="input-wrapper">
+                <div class="label">
+                    Email
                 </div>
                 <input type="email" placeholder="Type your email address">
             </div>
@@ -92,12 +111,20 @@ export default {
         margin-top: 56px;
         .input-wrapper {
             margin-bottom: 40px;
+            // .label {
+            //     // height:14px;
+            //     font-size:16px;
+            //     font-weight:400;
+            //     // text-align: center;
+            //     color: #0285FF;
+            //     margin-bottom: 8px;
+            // }
             .label {
-                // height:14px;
-                font-size:16px;
+                width:57px;
+                height:14px;
+                font-size:14px;
                 font-weight:400;
-                // text-align: center;
-                color: #0285FF;
+                color:rgba(45,52,59,1);
                 margin-bottom: 8px;
             }
             input, select {
