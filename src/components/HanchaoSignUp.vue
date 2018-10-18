@@ -15,7 +15,7 @@
                 <div class="label">
                     Name
                 </div>
-                <input type="text" placeholder="Type your region">
+                <input type="text" placeholder="Type your name">
             </div>
             <div class="input-wrapper">
                 <div class="label">
